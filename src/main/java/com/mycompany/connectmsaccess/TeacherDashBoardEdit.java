@@ -368,7 +368,7 @@ public class TeacherDashBoardEdit extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addGap(15, 15, 15))
@@ -511,8 +511,7 @@ public void tableupdate() {
         Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Administrator//Downloads//Database1.accdb");
 
         PreparedStatement pst = con.prepareStatement(
-            "UPDATE StudentInformation SET [Student Name]=?, [Student ID]=?, [Grade and Section]=?, [Student Email]=?, [Student Contact Number]=?, [Guardian Name]=?, [Guardian Contact]=?, [Guardian Email]=? WHERE ID = ?"
-        );
+            "UPDATE StudentInformation SET [Student Name]=?, [Student ID]=?, [Grade and Section]=?, [Student Email]=?, [Student Contact Number]=?, [Guardian Name]=?, [Guardian Contact]=?, [Guardian Email]=? WHERE ID = ?");
 
         pst.setString(1, SN);
         pst.setString(2, SID);
