@@ -181,7 +181,7 @@ public class UserLogin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Username and Password is incorrect");
             }else{
                 JOptionPane.showMessageDialog(null, "Login successful");
-                new StudentDashboard().show();
+                new TeacherDashboard().show();
                 dispose();
             }
 
