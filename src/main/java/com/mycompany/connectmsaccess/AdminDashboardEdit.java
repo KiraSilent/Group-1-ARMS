@@ -19,12 +19,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Administrator
  */
-public class TeacherDashBoardEdit extends javax.swing.JFrame {
+public class AdminDashboardEdit extends javax.swing.JFrame {
 
     /**
      * Creates new form TeacherDashBoardEdit
      */
-    public TeacherDashBoardEdit() {
+    public AdminDashboardEdit() {
         initComponents();
         tableupdate();
     }
@@ -425,7 +425,7 @@ public class TeacherDashBoardEdit extends javax.swing.JFrame {
 public void tableupdate() {
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Administrator//Downloads//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//rexce//Downloads//Database1.accdb");
 
         PreparedStatement pst = con.prepareStatement("SELECT * FROM StudentInformation");
         ResultSet rs = pst.executeQuery();
@@ -450,7 +450,7 @@ public void tableupdate() {
         }
 
     } catch (ClassNotFoundException | SQLException ex) {
-        Logger.getLogger(TeacherDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AdminDashboard.class.getName()).log(Level.SEVERE, null, ex);
     }
     
     
@@ -508,7 +508,7 @@ public void tableupdate() {
 
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Administrator//Downloads//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//rexce//Downloads//Database1.accdb");
 
         PreparedStatement pst = con.prepareStatement(
             "UPDATE StudentInformation SET [Student Name]=?, [Student ID]=?, [Grade and Section]=?, [Student Email]=?, [Student Contact Number]=?, [Guardian Name]=?, [Guardian Contact]=?, [Guardian Email]=? WHERE ID = ?");
@@ -539,10 +539,10 @@ public void tableupdate() {
         txt8.setText("");
 
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(TeacherDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AdminDashboard.class.getName()).log(Level.SEVERE, null, ex);
         JOptionPane.showMessageDialog(this, ex);
     } catch (SQLException ex) {
-        Logger.getLogger(TeacherDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AdminDashboard.class.getName()).log(Level.SEVERE, null, ex);
         JOptionPane.showMessageDialog(this, ex);
     }
 }
@@ -590,9 +590,9 @@ public void tableupdate() {
         txt8.setText("");
         }
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(TeacherDashBoardEdit.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminDashboardEdit.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(TeacherDashBoardEdit.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminDashboardEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
     
         
@@ -620,7 +620,7 @@ txt8.setText(model.getValueAt(selectedIndex, 8).toString()); // Guardian Email
     }//GEN-LAST:event_tab1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        TeacherDashboard edit = new TeacherDashboard();
+        AdminDashboard edit = new AdminDashboard();
         edit.setVisible(true);
      this.dispose();
 
@@ -644,20 +644,21 @@ txt8.setText(model.getValueAt(selectedIndex, 8).toString()); // Guardian Email
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TeacherDashBoardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TeacherDashBoardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TeacherDashBoardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TeacherDashBoardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashboardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TeacherDashBoardEdit().setVisible(true);
+                new AdminDashboardEdit().setVisible(true);
             }
         });
     }

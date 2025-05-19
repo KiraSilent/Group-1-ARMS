@@ -20,7 +20,8 @@ public class UserLogin extends javax.swing.JFrame {
     PreparedStatement pst;
     ResultSet rs;
     
-    
+    public static String loggedInUsername;
+
     public UserLogin() {
         initComponents();
         conn = ConnectMsAccess.conn();
@@ -167,27 +168,57 @@ public class UserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txt1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String username = txt1.getText();
-        char[] pass = txt2.getPassword();
-        String userpassword = String.valueOf(pass);
+      String username = txt1.getText();
+char[] pass = txt2.getPassword();
+String userpassword = String.valueOf(pass);
 
-        try {
-            String sqlquery = "SELECT * FROM UserLogin WHERE user_name = ? and user_password = ?";
-            pst = conn.prepareStatement(sqlquery);
-            pst.setString(1, username);
-            pst.setString(2, userpassword);
-            rs = pst.executeQuery();
-            if(!rs.next()){
-                JOptionPane.showMessageDialog(null, "Username and Password is incorrect");
-            }else{
-                JOptionPane.showMessageDialog(null, "Login successful");
-                new TeacherDashboard().show();
-                dispose();
-            }
+try {
+    String sqlquery = "SELECT * FROM UserLogin WHERE user_name = ? AND user_password = ?";
+    pst = conn.prepareStatement(sqlquery);
+    pst.setString(1, username);
+    pst.setString(2, userpassword);
+    rs = pst.executeQuery();
 
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, e);
+    if (!rs.next()) {
+        JOptionPane.showMessageDialog(null, "Username or Password is incorrect");
+    } else {
+        String role = rs.getString("role"); // read the role from the database
+
+        JOptionPane.showMessageDialog(null, "Login successful as " + role);
+
+        // Redirect based on role
+        switch (role.toLowerCase()) {
+            case "teacher":
+                new AdminDashboard().setVisible(true);
+                break;
+            case "student":
+                new StudentDashboard().setVisible(true);
+                break;
+            case "admin":
+                new AdminDashboard().setVisible(true);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Unknown user role.");
+                break;
         }
+if (rs.next()) {
+    // User successfully logged in
+     username = rs.getString("user_name");
+    
+    StudentProfile.loggedInUsername = username;
+    StudentProfileEdit.loggedInUsername = username; 
+
+    StudentProfileEdit spe = new StudentProfileEdit();
+    spe.setVisible(true);
+    this.dispose();
+}
+        dispose(); // close the login window
+    }
+} catch (SQLException e) {
+    JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage());
+
+}
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

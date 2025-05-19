@@ -10,6 +10,8 @@ package com.mycompany.connectmsaccess;
  */
 public class StudentProfileEdit extends javax.swing.JFrame {
 
+    static String loggedInUsername;
+
     /**
      * Creates new form StudentProfileEdit
      */
@@ -51,12 +53,12 @@ public class StudentProfileEdit extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        but7 = new javax.swing.JButton();
-        but8 = new javax.swing.JButton();
-        but9 = new javax.swing.JButton();
-        but10 = new javax.swing.JButton();
-        but11 = new javax.swing.JButton();
-        but12 = new javax.swing.JButton();
+        but1 = new javax.swing.JButton();
+        but2 = new javax.swing.JButton();
+        but3 = new javax.swing.JButton();
+        but4 = new javax.swing.JButton();
+        but5 = new javax.swing.JButton();
+        but6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,8 +114,6 @@ public class StudentProfileEdit extends javax.swing.JFrame {
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel20.setText("Home Address:");
-
-        jLabel21.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\Desktop\\images.jpg")); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(0, 102, 204));
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -178,7 +178,7 @@ public class StudentProfileEdit extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(390, 390, 390)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,8 +226,6 @@ public class StudentProfileEdit extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\Desktop\\imgs\\ccst logo 80px.png")); // NOI18N
-
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Clark College of Science and Technology");
@@ -238,20 +236,18 @@ public class StudentProfileEdit extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addContainerGap(510, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(17, 17, 17))
+                .addContainerGap())
         );
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
@@ -260,63 +256,63 @@ public class StudentProfileEdit extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        but7.setBackground(new java.awt.Color(0, 102, 204));
-        but7.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but7.setForeground(new java.awt.Color(255, 255, 255));
-        but7.setText("Profile");
-        but7.addActionListener(new java.awt.event.ActionListener() {
+        but1.setBackground(new java.awt.Color(0, 102, 204));
+        but1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but1.setForeground(new java.awt.Color(255, 255, 255));
+        but1.setText("Profile");
+        but1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but7ActionPerformed(evt);
+                but1ActionPerformed(evt);
             }
         });
 
-        but8.setBackground(new java.awt.Color(0, 102, 204));
-        but8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but8.setForeground(new java.awt.Color(255, 255, 255));
-        but8.setText("Students");
-        but8.addActionListener(new java.awt.event.ActionListener() {
+        but2.setBackground(new java.awt.Color(0, 102, 204));
+        but2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but2.setForeground(new java.awt.Color(255, 255, 255));
+        but2.setText("Dashboard");
+        but2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but8ActionPerformed(evt);
+                but2ActionPerformed(evt);
             }
         });
 
-        but9.setBackground(new java.awt.Color(0, 102, 204));
-        but9.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but9.setForeground(new java.awt.Color(255, 255, 255));
-        but9.setText("Courses");
-        but9.addActionListener(new java.awt.event.ActionListener() {
+        but3.setBackground(new java.awt.Color(0, 102, 204));
+        but3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but3.setForeground(new java.awt.Color(255, 255, 255));
+        but3.setText("My Courses");
+        but3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but9ActionPerformed(evt);
+                but3ActionPerformed(evt);
             }
         });
 
-        but10.setBackground(new java.awt.Color(0, 102, 204));
-        but10.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but10.setForeground(new java.awt.Color(255, 255, 255));
-        but10.setText("Attendance");
-        but10.addActionListener(new java.awt.event.ActionListener() {
+        but4.setBackground(new java.awt.Color(0, 102, 204));
+        but4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but4.setForeground(new java.awt.Color(255, 255, 255));
+        but4.setText("Attendance");
+        but4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but10ActionPerformed(evt);
+                but4ActionPerformed(evt);
             }
         });
 
-        but11.setBackground(new java.awt.Color(0, 102, 204));
-        but11.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but11.setForeground(new java.awt.Color(255, 255, 255));
-        but11.setText("Assignments");
-        but11.addActionListener(new java.awt.event.ActionListener() {
+        but5.setBackground(new java.awt.Color(0, 102, 204));
+        but5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but5.setForeground(new java.awt.Color(255, 255, 255));
+        but5.setText("Assignments");
+        but5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but11ActionPerformed(evt);
+                but5ActionPerformed(evt);
             }
         });
 
-        but12.setBackground(new java.awt.Color(0, 102, 204));
-        but12.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but12.setForeground(new java.awt.Color(255, 255, 255));
-        but12.setText("Grades");
-        but12.addActionListener(new java.awt.event.ActionListener() {
+        but6.setBackground(new java.awt.Color(0, 102, 204));
+        but6.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but6.setForeground(new java.awt.Color(255, 255, 255));
+        but6.setText("Grades");
+        but6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but12ActionPerformed(evt);
+                but6ActionPerformed(evt);
             }
         });
 
@@ -324,32 +320,32 @@ public class StudentProfileEdit extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(but12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(but6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(but1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(but2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                    .addComponent(but3, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                    .addComponent(but4, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                    .addComponent(but5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(but7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(but1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -391,39 +387,39 @@ public class StudentProfileEdit extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void but7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but7ActionPerformed
+    private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
         new StudentProfile().setVisible(true);
         dispose();
-    }//GEN-LAST:event_but7ActionPerformed
+    }//GEN-LAST:event_but1ActionPerformed
 
-    private void but8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but8ActionPerformed
+    private void but2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_but8ActionPerformed
+    }//GEN-LAST:event_but2ActionPerformed
 
-    private void but9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but9ActionPerformed
+    private void but3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but3ActionPerformed
         // TODO add your handling code here:
         new StudentCourses().setVisible(true);
         dispose();
-    }//GEN-LAST:event_but9ActionPerformed
+    }//GEN-LAST:event_but3ActionPerformed
 
-    private void but10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but10ActionPerformed
+    private void but4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but4ActionPerformed
         // TODO add your handling code here:
         new StudentAttendance().setVisible(true);
         dispose();
-    }//GEN-LAST:event_but10ActionPerformed
+    }//GEN-LAST:event_but4ActionPerformed
 
-    private void but11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but11ActionPerformed
+    private void but5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but5ActionPerformed
         // TODO add your handling code here:
         new StudentAssignments().setVisible(true);
         dispose();
-    }//GEN-LAST:event_but11ActionPerformed
+    }//GEN-LAST:event_but5ActionPerformed
 
-    private void but12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but12ActionPerformed
+    private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed
         // TODO add your handling code here:
         new StudentGrades().setVisible(true);
         dispose();
-    }//GEN-LAST:event_but12ActionPerformed
+    }//GEN-LAST:event_but6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -461,12 +457,12 @@ public class StudentProfileEdit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton but10;
-    private javax.swing.JButton but11;
-    private javax.swing.JButton but12;
-    private javax.swing.JButton but7;
-    private javax.swing.JButton but8;
-    private javax.swing.JButton but9;
+    private javax.swing.JButton but1;
+    private javax.swing.JButton but2;
+    private javax.swing.JButton but3;
+    private javax.swing.JButton but4;
+    private javax.swing.JButton but5;
+    private javax.swing.JButton but6;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -4,17 +4,25 @@
  */
 package com.mycompany.connectmsaccess;
 
-/**
- *
- * @author ADMIN
- */
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class StudentProfile extends javax.swing.JFrame {
 
-    /**
-     * Creates new form StudentProfile
-     */
+    static String loggedInUsername;
+
+    Connection conn;
+    PreparedStatement pst;
+    ResultSet rs;
+
+
     public StudentProfile() {
         initComponents();
+        conn = ConnectMsAccess.conn();
+
     }
 
     /**
@@ -27,22 +35,22 @@ public class StudentProfile extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        lblusername = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblstudentid = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblemail = new javax.swing.JLabel();
+        lblfullname = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lbldob = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lblgender = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        lblnationality = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lblphonenumber = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        lblhomeaddress = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -51,69 +59,67 @@ public class StudentProfile extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        but7 = new javax.swing.JButton();
-        but8 = new javax.swing.JButton();
-        but9 = new javax.swing.JButton();
-        but10 = new javax.swing.JButton();
-        but11 = new javax.swing.JButton();
-        but12 = new javax.swing.JButton();
+        but1 = new javax.swing.JButton();
+        but2 = new javax.swing.JButton();
+        but3 = new javax.swing.JButton();
+        but4 = new javax.swing.JButton();
+        but5 = new javax.swing.JButton();
+        but6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Name");
+        lblusername.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblusername.setText("Name");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Student ID:");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("01-00-0001");
+        lblstudentid.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblstudentid.setText("01-00-0001");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Email:");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("*Insert Email*");
+        lblemail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblemail.setText("*Insert Email*");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("*Full name*");
+        lblfullname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblfullname.setText("*Full name*");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Full Name:");
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setText("October 30, 2007");
+        lbldob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbldob.setText("October 30, 2007");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Date of Birth:");
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel13.setText("Male");
+        lblgender.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblgender.setText("Male");
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Gender:");
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel15.setText("Filipino");
+        lblnationality.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblnationality.setText("Filipino");
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Nationality:");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel17.setText("*Phone number*");
+        lblphonenumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblphonenumber.setText("*Phone number*");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Phone Number: ");
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setText("*Home address*");
+        lblhomeaddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblhomeaddress.setText("*Home address*");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel20.setText("Home Address:");
-
-        jLabel21.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\Desktop\\images.jpg")); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(0, 102, 204));
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -140,35 +146,35 @@ public class StudentProfile extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11))
+                                .addComponent(lbldob))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9))
+                                .addComponent(lblfullname))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13))
+                                .addComponent(lblgender))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel15))
+                                .addComponent(lblnationality))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel17))
+                                .addComponent(lblphonenumber))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel20)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel19))
+                                .addComponent(lblhomeaddress))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(425, 425, 425)
-                                .addComponent(jLabel4))
+                                .addComponent(lblusername))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(384, 384, 384)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6))
+                                .addComponent(lblstudentid))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addGap(394, 394, 394)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +182,7 @@ public class StudentProfile extends javax.swing.JFrame {
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel8)))
+                                        .addComponent(lblemail)))
                                 .addGap(16, 16, 16)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -186,47 +192,45 @@ public class StudentProfile extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addComponent(lblusername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(lblstudentid))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(lblemail))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel9))
+                    .addComponent(lblfullname))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel11))
+                    .addComponent(lbldob))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel13))
+                    .addComponent(lblgender))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jLabel15))
+                    .addComponent(lblnationality))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jLabel17))
+                    .addComponent(lblphonenumber))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jLabel19))
+                    .addComponent(lblhomeaddress))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(278, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\Desktop\\imgs\\ccst logo 80px.png")); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -260,63 +264,63 @@ public class StudentProfile extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        but7.setBackground(new java.awt.Color(0, 102, 204));
-        but7.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but7.setForeground(new java.awt.Color(255, 255, 255));
-        but7.setText("Profile");
-        but7.addActionListener(new java.awt.event.ActionListener() {
+        but1.setBackground(new java.awt.Color(0, 102, 204));
+        but1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but1.setForeground(new java.awt.Color(255, 255, 255));
+        but1.setText("Profile");
+        but1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but7ActionPerformed(evt);
+                but1ActionPerformed(evt);
             }
         });
 
-        but8.setBackground(new java.awt.Color(0, 102, 204));
-        but8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but8.setForeground(new java.awt.Color(255, 255, 255));
-        but8.setText("Students");
-        but8.addActionListener(new java.awt.event.ActionListener() {
+        but2.setBackground(new java.awt.Color(0, 102, 204));
+        but2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but2.setForeground(new java.awt.Color(255, 255, 255));
+        but2.setText("Dashboard");
+        but2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but8ActionPerformed(evt);
+                but2ActionPerformed(evt);
             }
         });
 
-        but9.setBackground(new java.awt.Color(0, 102, 204));
-        but9.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but9.setForeground(new java.awt.Color(255, 255, 255));
-        but9.setText("Courses");
-        but9.addActionListener(new java.awt.event.ActionListener() {
+        but3.setBackground(new java.awt.Color(0, 102, 204));
+        but3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but3.setForeground(new java.awt.Color(255, 255, 255));
+        but3.setText("My Courses");
+        but3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but9ActionPerformed(evt);
+                but3ActionPerformed(evt);
             }
         });
 
-        but10.setBackground(new java.awt.Color(0, 102, 204));
-        but10.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but10.setForeground(new java.awt.Color(255, 255, 255));
-        but10.setText("Attendance");
-        but10.addActionListener(new java.awt.event.ActionListener() {
+        but4.setBackground(new java.awt.Color(0, 102, 204));
+        but4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but4.setForeground(new java.awt.Color(255, 255, 255));
+        but4.setText("Attendance");
+        but4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but10ActionPerformed(evt);
+                but4ActionPerformed(evt);
             }
         });
 
-        but11.setBackground(new java.awt.Color(0, 102, 204));
-        but11.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but11.setForeground(new java.awt.Color(255, 255, 255));
-        but11.setText("Assignments");
-        but11.addActionListener(new java.awt.event.ActionListener() {
+        but5.setBackground(new java.awt.Color(0, 102, 204));
+        but5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but5.setForeground(new java.awt.Color(255, 255, 255));
+        but5.setText("Assignments");
+        but5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but11ActionPerformed(evt);
+                but5ActionPerformed(evt);
             }
         });
 
-        but12.setBackground(new java.awt.Color(0, 102, 204));
-        but12.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but12.setForeground(new java.awt.Color(255, 255, 255));
-        but12.setText("Grades");
-        but12.addActionListener(new java.awt.event.ActionListener() {
+        but6.setBackground(new java.awt.Color(0, 102, 204));
+        but6.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but6.setForeground(new java.awt.Color(255, 255, 255));
+        but6.setText("Grades");
+        but6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but12ActionPerformed(evt);
+                but6ActionPerformed(evt);
             }
         });
 
@@ -324,32 +328,32 @@ public class StudentProfile extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(but12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(but6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(but1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(but2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                    .addComponent(but3, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                    .addComponent(but4, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                    .addComponent(but5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(but7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(but1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -385,45 +389,86 @@ public class StudentProfile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Add other fields you want to show
+private void ran() {
+    try {
+        
+        String sql = "SELECT user_name, full_name, email, student_id, gender, nationality, date_of_birth, phone_number, home_address " +
+                     "FROM UserLogin WHERE user_name = ?";
+        pst = conn.prepareStatement(sql);
+        pst.setString(1, loggedInUsername);
+        rs = pst.executeQuery();
+
+        if (rs.next()) {
+            lblusername.setText(rs.getString("user_name"));
+            lblfullname.setText(rs.getString("full_name"));
+            lblemail.setText(rs.getString("email"));
+            lblstudentid.setText(rs.getString("student_id"));
+            lblgender.setText(rs.getString("gender"));
+            lblnationality.setText(rs.getString("nationality"));
+            lbldob.setText(rs.getString("date_of_birth"));
+            lblphonenumber.setText(rs.getString("phone_number"));
+            lblhomeaddress.setText(rs.getString("home_address"));
+        } else {
+            JOptionPane.showMessageDialog(null, "User profile not found.");
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Failed to load profile: " + e.getMessage());
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (pst != null) pst.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+}
+    
+   
+   
+
+        
+        {  
+}
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         new StudentProfileEdit().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void but7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but7ActionPerformed
+    private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
         new StudentProfile().setVisible(true);
         dispose();
-    }//GEN-LAST:event_but7ActionPerformed
+    }//GEN-LAST:event_but1ActionPerformed
 
-    private void but8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but8ActionPerformed
+    private void but2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_but8ActionPerformed
+    }//GEN-LAST:event_but2ActionPerformed
 
-    private void but9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but9ActionPerformed
+    private void but3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but3ActionPerformed
         // TODO add your handling code here:
         new StudentCourses().setVisible(true);
         dispose();
-    }//GEN-LAST:event_but9ActionPerformed
+    }//GEN-LAST:event_but3ActionPerformed
 
-    private void but10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but10ActionPerformed
+    private void but4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but4ActionPerformed
         // TODO add your handling code here:
         new StudentAttendance().setVisible(true);
         dispose();
-    }//GEN-LAST:event_but10ActionPerformed
+    }//GEN-LAST:event_but4ActionPerformed
 
-    private void but11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but11ActionPerformed
+    private void but5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but5ActionPerformed
         // TODO add your handling code here:
         new StudentAssignments().setVisible(true);
         dispose();
-    }//GEN-LAST:event_but11ActionPerformed
+    }//GEN-LAST:event_but5ActionPerformed
 
-    private void but12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but12ActionPerformed
+    private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed
         // TODO add your handling code here:
         new StudentGrades().setVisible(true);
         dispose();
-    }//GEN-LAST:event_but12ActionPerformed
+    }//GEN-LAST:event_but6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -461,36 +506,41 @@ public class StudentProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton but10;
-    private javax.swing.JButton but11;
-    private javax.swing.JButton but12;
-    private javax.swing.JButton but7;
-    private javax.swing.JButton but8;
-    private javax.swing.JButton but9;
+    private javax.swing.JButton but1;
+    private javax.swing.JButton but2;
+    private javax.swing.JButton but3;
+    private javax.swing.JButton but4;
+    private javax.swing.JButton but5;
+    private javax.swing.JButton but6;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel lbldob;
+    private javax.swing.JLabel lblemail;
+    private javax.swing.JLabel lblfullname;
+    private javax.swing.JLabel lblgender;
+    private javax.swing.JLabel lblhomeaddress;
+    private javax.swing.JLabel lblnationality;
+    private javax.swing.JLabel lblphonenumber;
+    private javax.swing.JLabel lblstudentid;
+    private javax.swing.JLabel lblusername;
     // End of variables declaration//GEN-END:variables
+
+    private void loadUserProfile() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
+
