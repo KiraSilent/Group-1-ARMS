@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class StudentProfile extends javax.swing.JFrame {
+public class AdminProfile extends javax.swing.JFrame {
 
     static String loggedInUsername;
 
@@ -19,7 +19,7 @@ public class StudentProfile extends javax.swing.JFrame {
     ResultSet rs;
 
 
-    public StudentProfile() {
+    public AdminProfile() {
         initComponents();
         conn = ConnectMsAccess.conn();
 
@@ -437,7 +437,7 @@ private void ran() {
 
     private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
-        new StudentProfile().setVisible(true);
+        new AdminProfile().setVisible(true);
         dispose();
     }//GEN-LAST:event_but1ActionPerformed
 
@@ -488,20 +488,21 @@ private void ran() {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentProfile().setVisible(true);
+                new AdminProfile().setVisible(true);
             }
         });
     }

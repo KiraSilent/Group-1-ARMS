@@ -189,7 +189,7 @@ try {
         // Redirect based on role
         switch (role.toLowerCase()) {
             case "teacher":
-                new AdminDashboard().setVisible(true);
+                new TeacherDashboard().setVisible(true);
                 break;
             case "student":
                 new StudentDashboard().setVisible(true);

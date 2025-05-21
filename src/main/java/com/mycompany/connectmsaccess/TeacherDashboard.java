@@ -387,7 +387,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
     public void tableupdate() {
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//rexce//Downloads//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
         pst = con.prepareStatement("SELECT * FROM StudentInformation");
         rs = pst.executeQuery();
@@ -419,8 +419,8 @@ public class TeacherDashboard extends javax.swing.JFrame {
     }
     private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
-        new StudentProfile().setVisible(true);
-        dispose();
+        new TeacherProfile().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_but1ActionPerformed
 
     private void but2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but2ActionPerformed
@@ -465,7 +465,7 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
     try {
     Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//rexce//Downloads//Database1.accdb");
+    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
     
     // Step 1: Prepare the INSERT statement
     pst = con.prepareStatement("INSERT INTO StudentInformation([Student Name], [Student ID], [Grade and Section], [Student Email], [Student Contact Number], [Guardian Name], [Guardian Contact], [Guardian Email]) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");   

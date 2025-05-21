@@ -3,28 +3,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.connectmsaccess;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
- * @author Administrator
+ * @author ADMIN
  */
-public class AdminDashboardEdit extends javax.swing.JFrame {
-
+public class TeacherGrades extends javax.swing.JFrame {
+    Connection conn;
+    PreparedStatement pst;
+    ResultSet rs;
     /**
-     * Creates new form TeacherDashBoardEdit
+     * Creates new form TeacherDashboard
      */
-    public AdminDashboardEdit() {
+    public TeacherGrades() {
         initComponents();
         tableupdate();
     }
@@ -41,6 +42,7 @@ public class AdminDashboardEdit extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tab1 = new javax.swing.JTable();
@@ -62,7 +64,6 @@ public class AdminDashboardEdit extends javax.swing.JFrame {
         javax.swing.JLabel jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         javax.swing.JButton jButton2 = new javax.swing.JButton();
-        javax.swing.JButton jButton3 = new javax.swing.JButton();
         txt5 = new javax.swing.JTextField();
         javax.swing.JLabel jLabel9 = new javax.swing.JLabel();
         txt6 = new javax.swing.JTextField();
@@ -71,8 +72,6 @@ public class AdminDashboardEdit extends javax.swing.JFrame {
         javax.swing.JLabel jLabel11 = new javax.swing.JLabel();
         txt8 = new javax.swing.JTextField();
         javax.swing.JLabel jLabel12 = new javax.swing.JLabel();
-        javax.swing.JButton jButton4 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,6 +103,10 @@ public class AdminDashboardEdit extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel3.setText("Student Management");
+
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         tab1.setModel(new javax.swing.table.DefaultTableModel(
@@ -123,11 +126,6 @@ public class AdminDashboardEdit extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-        });
-        tab1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tab1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tab1);
@@ -258,18 +256,10 @@ public class AdminDashboardEdit extends javax.swing.JFrame {
         jLabel8.setText("Enter Student Data");
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("Edit");
+        jButton2.setText("Add");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton3.setText("Delete");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
             }
         });
 
@@ -280,14 +270,6 @@ public class AdminDashboardEdit extends javax.swing.JFrame {
         jLabel11.setText("Guardian's Contact");
 
         jLabel12.setText("Guardian's Email");
-
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton4.setText("Go Back");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -317,18 +299,11 @@ public class AdminDashboardEdit extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jLabel8)))
-                .addGap(0, 10, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70))))
+                .addGap(0, 22, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,70 +342,55 @@ public class AdminDashboardEdit extends javax.swing.JFrame {
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addGap(27, 27, 27))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("Student Management");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(202, 202, 202)
-                .addComponent(jLabel3)
-                .addContainerGap(805, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap()))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jLabel3)
-                .addContainerGap(711, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(46, 46, 46)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(51, 51, 51)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(27, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public void tableupdate() {
+
+    public void tableupdate() {
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
-        PreparedStatement pst = con.prepareStatement("SELECT * FROM StudentInformation");
-        ResultSet rs = pst.executeQuery();
+        pst = con.prepareStatement("SELECT * FROM StudentInformation");
+        rs = pst.executeQuery();
 
         DefaultTableModel dft = (DefaultTableModel) tab1.getModel();
         dft.setRowCount(0); // Clear table
@@ -452,15 +412,15 @@ public void tableupdate() {
         }
 
     } catch (ClassNotFoundException | SQLException ex) {
-        Logger.getLogger(AdminDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(TeacherGrades.class.getName()).log(Level.SEVERE, null, ex);
     }
-    
-    
-}
+
+
+    }
     private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
-        new StudentProfile().setVisible(true);
-        dispose();
+        new TeacherProfile().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_but1ActionPerformed
 
     private void but2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but2ActionPerformed
@@ -492,14 +452,6 @@ public void tableupdate() {
     }//GEN-LAST:event_but6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    
-        
-        
-        DefaultTableModel model = (DefaultTableModel) tab1.getModel();
-    int selectedIndex = tab1.getSelectedRow();
-        
-    int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
-
     String SN, SID, GAD, SE, CN, G, GE, GCN;    
 
     SN = txt1.getText();
@@ -512,69 +464,23 @@ public void tableupdate() {
     GE = txt8.getText();
 
     try {
-        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
-
-        PreparedStatement pst = con.prepareStatement(
-            "UPDATE StudentInformation SET [Student Name]=?, [Student ID]=?, [Grade and Section]=?, [Student Email]=?, [Student Contact Number]=?, [Guardian Name]=?, [Guardian Contact]=?, [Guardian Email]=? WHERE ID = ?");
-
-        pst.setString(1, SN);
-        pst.setString(2, SID);
-        pst.setString(3, GAD);
-        pst.setString(4, SE);
-        pst.setString(5, CN);
-        pst.setString(6, G);
-        pst.setString(7, GCN);
-        pst.setString(8, GE); 
-        pst.setInt(9, id); 
-
-        pst.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Student Information Updated!", "Student Information", JOptionPane.INFORMATION_MESSAGE);
-
-        tableupdate();
-
-        // Clear fields
-        txt1.setText("");
-        txt2.setText("");
-        txt3.setText("");
-        txt4.setText("");
-        txt5.setText("");
-        txt6.setText("");
-        txt7.setText("");
-        txt8.setText("");
-
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(AdminDashboard.class.getName()).log(Level.SEVERE, null, ex);
-        JOptionPane.showMessageDialog(this, ex);
-    } catch (SQLException ex) {
-        Logger.getLogger(AdminDashboard.class.getName()).log(Level.SEVERE, null, ex);
-        JOptionPane.showMessageDialog(this, ex);
-    }
-}
-    {
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-    DefaultTableModel model = (DefaultTableModel) tab1.getModel();
-    int selectedIndex = tab1.getSelectedRow();
-        
-    int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
-        
-        int dialogresult = JOptionPane.showConfirmDialog(null, "Are you sure you wanna delete this student information?", "Warning", JOptionPane.YES_NO_OPTION);
-        
-        if (dialogresult == JOptionPane.YES_NO_OPTION)
-        {
-        try {
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//Administrator//Downloads//Database1.accdb");
-    PreparedStatement pst = con.prepareStatement("delete from StudentInformation where id = ?");   
-        
-    pst.setInt(1, id); 
+    Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
+    
+    // Step 1: Prepare the INSERT statement
+    pst = con.prepareStatement("INSERT INTO StudentInformation([Student Name], [Student ID], [Grade and Section], [Student Email], [Student Contact Number], [Guardian Name], [Guardian Contact], [Guardian Email]) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");   
+    
+    pst.setString(1, SN);
+    pst.setString(2, SID);
+    pst.setString(3, GAD);
+    pst.setString(4, SE);
+    pst.setString(5, CN);
+    pst.setString(6, G);
+    pst.setString(7, GCN);
+    pst.setString(8, GE); 
 
     String query = "SELECT COUNT(*) FROM StudentInformation WHERE [Student ID] = ?";
     PreparedStatement checkStmt = con.prepareStatement(query);
-            String SID = null;
     checkStmt.setString(1, SID);
     ResultSet rs = checkStmt.executeQuery();
 
@@ -583,7 +489,7 @@ public void tableupdate() {
     } else {
         pst.executeUpdate();
         con.commit();
-        JOptionPane.showMessageDialog(null, "Student Information Deleted!", "Student Information", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You have successfully added!", "Student Information", JOptionPane.INFORMATION_MESSAGE);
         tableupdate();
         txt1.setText("");
         txt2.setText("");
@@ -593,44 +499,25 @@ public void tableupdate() {
         txt6.setText("");
         txt7.setText("");
         txt8.setText("");
-        }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminDashboardEdit.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminDashboardEdit.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-        
-        
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void tab1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1MouseClicked
-        // TODO add your handling code here:
-        
-DefaultTableModel model = (DefaultTableModel) tab1.getModel();
-int selectedIndex = tab1.getSelectedRow();  
-
-txt1.setText(model.getValueAt(selectedIndex, 1).toString()); // Student Name
-txt2.setText(model.getValueAt(selectedIndex, 2).toString()); // Student ID
-txt3.setText(model.getValueAt(selectedIndex, 3).toString()); // Grade and Section
-txt4.setText(model.getValueAt(selectedIndex, 4).toString()); // Student Email
-txt5.setText(model.getValueAt(selectedIndex, 5).toString()); // Student Contact Number
-txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // Guardian Name
-txt7.setText(model.getValueAt(selectedIndex, 7).toString()); // Guardian Contact
-txt8.setText(model.getValueAt(selectedIndex, 8).toString()); // Guardian Email
 
         
         
-    }//GEN-LAST:event_tab1MouseClicked
+        
+    }
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        AdminDashboard edit = new AdminDashboard();
-        edit.setVisible(true);
-     this.dispose();
+    rs.close();
+    checkStmt.close();
 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    } catch (ClassNotFoundException ex) {
+    Logger.getLogger(TeacherGrades.class.getName()).log(Level.SEVERE, null, ex);
+    JOptionPane.showMessageDialog(this, ex);
+
+    } catch (SQLException ex) {
+    Logger.getLogger(TeacherGrades.class.getName()).log(Level.SEVERE, null, ex);
+    JOptionPane.showMessageDialog(this, ex);
+    }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -649,21 +536,27 @@ txt8.setText(model.getValueAt(selectedIndex, 8).toString()); // Guardian Email
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherGrades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherGrades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherGrades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboardEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherGrades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminDashboardEdit().setVisible(true);
+                new TeacherGrades().setVisible(true);
             }
         });
     }

@@ -402,7 +402,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     public void tableupdate() {
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//rexce//Downloads//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
         pst = con.prepareStatement("SELECT * FROM StudentInformation");
         rs = pst.executeQuery();
@@ -480,7 +480,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     try {
     Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//rexce//Downloads//Database1.accdb");
+    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
     
     // Step 1: Prepare the INSERT statement
     pst = con.prepareStatement("INSERT INTO StudentInformation([Student Name], [Student ID], [Grade and Section], [Student Email], [Student Contact Number], [Guardian Name], [Guardian Contact], [Guardian Email]) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");   

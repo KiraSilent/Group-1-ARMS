@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class StudentProfile extends javax.swing.JFrame {
+public class TeacherProfile extends javax.swing.JFrame {
 
     static String loggedInUsername;
 
@@ -19,7 +19,7 @@ public class StudentProfile extends javax.swing.JFrame {
     ResultSet rs;
 
 
-    public StudentProfile() {
+    public TeacherProfile() {
         initComponents();
         conn = ConnectMsAccess.conn();
 
@@ -392,7 +392,7 @@ public class StudentProfile extends javax.swing.JFrame {
 private void ran() {
     try {
         
-        String sql = "SELECT user_name, full_name, email, student_id, gender, nationality, date_of_birth, phone_number, home_address " +
+        String sql = "SELECT user_name, full_name, email, tchr_id, gender, nationality, date_of_birth, phone_number, home_address " +
                      "FROM UserLogin WHERE user_name = ?";
         pst = conn.prepareStatement(sql);
         pst.setString(1, loggedInUsername);
@@ -402,7 +402,7 @@ private void ran() {
             lblusername.setText(rs.getString("user_name"));
             lblfullname.setText(rs.getString("full_name"));
             lblemail.setText(rs.getString("email"));
-            lblstudentid.setText(rs.getString("student_id"));
+            lblstudentid.setText(rs.getString("tchr_id"));
             lblgender.setText(rs.getString("gender"));
             lblnationality.setText(rs.getString("nationality"));
             lbldob.setText(rs.getString("date_of_birth"));
@@ -437,14 +437,14 @@ private void ran() {
 
     private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
-        new StudentProfile().setVisible(true);
+        new TeacherProfile().setVisible(true);
         dispose();
     }//GEN-LAST:event_but1ActionPerformed
 
     private void but2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but2ActionPerformed
         // TODO add your handling code here:
         new TeacherDashboard().setVisible(true);
-        
+        this.dispose();
     }//GEN-LAST:event_but2ActionPerformed
 
     private void but3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but3ActionPerformed
@@ -488,20 +488,21 @@ private void ran() {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TeacherProfile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentProfile().setVisible(true);
+                new TeacherProfile().setVisible(true);
             }
         });
     }
