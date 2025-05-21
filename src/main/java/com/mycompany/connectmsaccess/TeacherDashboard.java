@@ -429,25 +429,25 @@ public class TeacherDashboard extends javax.swing.JFrame {
 
     private void but3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but3ActionPerformed
         // TODO add your handling code here:
-        new StudentCourses().setVisible(true);
+        new TeacherCourses().setVisible(true);
         dispose();
     }//GEN-LAST:event_but3ActionPerformed
 
     private void but4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but4ActionPerformed
         // TODO add your handling code here:
-        new StudentAttendance().setVisible(true);
+        new TeacherAttendance().setVisible(true);
         dispose();
     }//GEN-LAST:event_but4ActionPerformed
 
     private void but5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but5ActionPerformed
         // TODO add your handling code here:
-        new StudentAssignments().setVisible(true);
+        new TeacherAssignments().setVisible(true);
         dispose();
     }//GEN-LAST:event_but5ActionPerformed
 
     private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed
         // TODO add your handling code here:
-        new StudentGrades().setVisible(true);
+        new TeacherGrades().setVisible(true);
         dispose();
     }//GEN-LAST:event_but6ActionPerformed
 
