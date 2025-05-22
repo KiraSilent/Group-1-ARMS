@@ -361,7 +361,7 @@ public class TeacherGrades extends javax.swing.JFrame {
     public void tableupdate() {
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
 
         pst = con.prepareStatement("SELECT * FROM Grades");
         rs = pst.executeQuery();
@@ -430,7 +430,7 @@ public class TeacherGrades extends javax.swing.JFrame {
 
     try {
     Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
+    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
     
     // Step 1: Prepare the INSERT statement
     pst = con.prepareStatement("INSERT INTO Grades([student_name], [student_id], [grade_and_section], [frstQ], [scndQ], [avgG]) VALUES (?, ?, ?, ?, ?, ?)");   
@@ -487,51 +487,59 @@ public class TeacherGrades extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tab1.getModel();
-    int selectedIndex = tab1.getSelectedRow();
-        
-    int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
+    DefaultTableModel model = (DefaultTableModel) tab1.getModel();
+int selectedIndex = tab1.getSelectedRow();
 
-    String SN, SID, GAD, CC, S, R;    
+int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
 
-    SN = txt1.getText();
-    SID = txt2.getText();
-    GAD = txt3.getText();
-    CC = txt4.getText();
-    S = txt5.getText();
+String SN, SID, GAD;
+double CC, S, AVG;
 
-    try {
-        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
+SN = txt1.getText();
+SID = txt2.getText();
+GAD = txt3.getText();
+CC = Double.parseDouble(txt4.getText());
+S = Double.parseDouble(txt5.getText());
 
-        PreparedStatement pst = con.prepareStatement(
-            "UPDATE Grades SET [student_name]=?, [student_id]=?, [grade_and_section]=?, [frstQ]=?, [scndQ]=?, [avgG]=? WHERE ID = ?");
+AVG = (CC + S) / 2;
 
-        pst.setString(1, SN);
-        pst.setString(2, SID);
-        pst.setString(3, GAD);
-        pst.setString(4, CC);
-        pst.setString(5, S);
-        pst.setInt(6, id); 
+try {
+    Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
 
-        pst.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Student Grades  Updated!", "Student Grades", JOptionPane.INFORMATION_MESSAGE);
+    PreparedStatement pst = con.prepareStatement(
+        "UPDATE Grades SET [student_name]=?, [student_id]=?, [grade_and_section]=?, [frstQ]=?, [scndQ]=?, [avgG]=? WHERE ID = ?");
 
-        tableupdate();
+    pst.setString(1, SN);
+    pst.setString(2, SID);
+    pst.setString(3, GAD);
+    pst.setDouble(4, CC);
+    pst.setDouble(5, S);
+    pst.setDouble(6, AVG);
+    pst.setInt(7, id);  // ID goes last
 
-        // Clear fields
-        txt1.setText("");
-        txt2.setText("");
-        txt3.setText("");
-        txt4.setText("");
-        txt5.setText("");
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(TeacherGrades.class.getName()).log(Level.SEVERE, null, ex);
-        JOptionPane.showMessageDialog(this, ex);
-    } catch (SQLException ex) {
-        Logger.getLogger(TeacherGrades.class.getName()).log(Level.SEVERE, null, ex);
-        JOptionPane.showMessageDialog(this, ex);
-    }
+    pst.executeUpdate();
+    JOptionPane.showMessageDialog(null, "Student Grades Updated!", "Student Grades", JOptionPane.INFORMATION_MESSAGE);
+
+    tableupdate();
+
+    // Clear fields
+    txt1.setText("");
+    txt2.setText("");
+    txt3.setText("");
+    txt4.setText("");
+    txt5.setText("");
+
+} catch (ClassNotFoundException ex) {
+    Logger.getLogger(TeacherGrades.class.getName()).log(Level.SEVERE, null, ex);
+    JOptionPane.showMessageDialog(this, ex);
+} catch (SQLException ex) {
+    Logger.getLogger(TeacherGrades.class.getName()).log(Level.SEVERE, null, ex);
+    JOptionPane.showMessageDialog(this, ex);
+} catch (NumberFormatException ex) {
+    JOptionPane.showMessageDialog(this, "Please enter valid numeric grades.", "Input Error", JOptionPane.ERROR_MESSAGE);
+}
+
         
     }//GEN-LAST:event_jButton3ActionPerformed
 

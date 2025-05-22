@@ -18,14 +18,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ADMIN
  */
-public class TeacherCourses extends javax.swing.JFrame {
+public class AdminAttendance extends javax.swing.JFrame {
     Connection conn;
     PreparedStatement pst;
     ResultSet rs;
     /**
      * Creates new form TeacherDashboard
      */
-    public TeacherCourses() {
+    public AdminAttendance() {
         initComponents();
         tableupdate();
     }
@@ -114,11 +114,11 @@ public class TeacherCourses extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Student Name", "Student ID", "Grade and Section", "Course Code", "Schedule", "Room"
+                "ID", "Student Name", "Student ID", "Grade and Section", "September", "October", "November"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -239,7 +239,7 @@ public class TeacherCourses extends javax.swing.JFrame {
 
         jLabel6.setText("Grade and Section");
 
-        jLabel7.setText("Course Code");
+        jLabel7.setText("September (Days present)");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Enter Student Data");
@@ -252,9 +252,9 @@ public class TeacherCourses extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Schedule");
+        jLabel9.setText("October (Days present)");
 
-        jLabel10.setText("Room");
+        jLabel10.setText("November (Days present)");
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setText("Edit");
@@ -281,7 +281,6 @@ public class TeacherCourses extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel9)
                             .addComponent(txt5)
                             .addComponent(jLabel7)
                             .addComponent(jLabel6)
@@ -292,7 +291,8 @@ public class TeacherCourses extends javax.swing.JFrame {
                             .addComponent(txt1)
                             .addComponent(txt4, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(jLabel10)
-                            .addComponent(txt6)))
+                            .addComponent(txt6)
+                            .addComponent(jLabel9)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jLabel8)))
@@ -383,9 +383,9 @@ public class TeacherCourses extends javax.swing.JFrame {
     public void tableupdate() {
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
 
-        pst = con.prepareStatement("SELECT * FROM Courses");
+        pst = con.prepareStatement("SELECT * FROM Attendance");
         rs = pst.executeQuery();
 
         DefaultTableModel dft = (DefaultTableModel) tab1.getModel();
@@ -398,15 +398,15 @@ public class TeacherCourses extends javax.swing.JFrame {
             v2.add(rs.getString("student_name"));
             v2.add(rs.getString("student_id"));
             v2.add(rs.getString("grade_and_section"));
-            v2.add(rs.getString("course_code"));
-            v2.add(rs.getString("schedule"));
-            v2.add(rs.getString("room"));
+            v2.add(rs.getString("september"));
+            v2.add(rs.getString("october"));
+            v2.add(rs.getString("november"));
 
             dft.addRow(v2);
         }
 
     } catch (ClassNotFoundException | SQLException ex) {
-        Logger.getLogger(TeacherCourses.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AdminAttendance.class.getName()).log(Level.SEVERE, null, ex);
     }
 
 
@@ -430,7 +430,7 @@ public class TeacherCourses extends javax.swing.JFrame {
 
     private void but4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but4ActionPerformed
         // TODO add your handling code here:
-        new TeacherAttendance().setVisible(true);
+        new AdminAttendance().setVisible(true);
         dispose();
     }//GEN-LAST:event_but4ActionPerformed
 
@@ -455,7 +455,7 @@ public class TeacherCourses extends javax.swing.JFrame {
     Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
     
     // Step 1: Prepare the INSERT statement
-    pst = con.prepareStatement("INSERT INTO Courses([student_name], [student_id], [grade_and_section], [course_code], [schedule], [room]) VALUES (?, ?, ?, ?, ?, ?)");   
+    pst = con.prepareStatement("INSERT INTO Attendance([student_name], [student_id], [grade_and_section], [september], [october], [november]) VALUES (?, ?, ?, ?, ?, ?)");   
     
     pst.setString(1, SN);
     pst.setString(2, SID);
@@ -464,7 +464,7 @@ public class TeacherCourses extends javax.swing.JFrame {
     pst.setString(5, S);
     pst.setString(6, R);
 
-    String query = "SELECT COUNT(*) FROM Courses WHERE [student_id] = ?";
+    String query = "SELECT COUNT(*) FROM Attendance WHERE [student_id] = ?";
     PreparedStatement checkStmt = con.prepareStatement(query);
     checkStmt.setString(1, SID);
     ResultSet rs = checkStmt.executeQuery();
@@ -492,11 +492,11 @@ public class TeacherCourses extends javax.swing.JFrame {
     checkStmt.close();
 
     } catch (ClassNotFoundException ex) {
-    Logger.getLogger(TeacherCourses.class.getName()).log(Level.SEVERE, null, ex);
+    Logger.getLogger(AdminAttendance.class.getName()).log(Level.SEVERE, null, ex);
     JOptionPane.showMessageDialog(this, ex);
 
     } catch (SQLException ex) {
-    Logger.getLogger(TeacherCourses.class.getName()).log(Level.SEVERE, null, ex);
+    Logger.getLogger(AdminAttendance.class.getName()).log(Level.SEVERE, null, ex);
     JOptionPane.showMessageDialog(this, ex);
     }
         
@@ -520,10 +520,10 @@ public class TeacherCourses extends javax.swing.JFrame {
 
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
         PreparedStatement pst = con.prepareStatement(
-            "UPDATE Courses SET [student_name]=?, [student_id]=?, [grade_and_section]=?, [course_code]=?, [schedule]=?, [room]=? WHERE ID = ?");
+            "UPDATE Attendance SET [student_name]=?, [student_id]=?, [grade_and_section]=?, [september]=?, [october]=?, [november]=? WHERE ID = ?");
 
         pst.setString(1, SN);
         pst.setString(2, SID);
@@ -534,7 +534,7 @@ public class TeacherCourses extends javax.swing.JFrame {
         pst.setInt(7, id); 
 
         pst.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Student Course Information Updated!", "Student Information", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Student Attendance Updated!", "Attendance", JOptionPane.INFORMATION_MESSAGE);
 
         tableupdate();
 
@@ -546,10 +546,10 @@ public class TeacherCourses extends javax.swing.JFrame {
         txt5.setText("");
         txt6.setText("");
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(TeacherCourses.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AdminAttendance.class.getName()).log(Level.SEVERE, null, ex);
         JOptionPane.showMessageDialog(this, ex);
     } catch (SQLException ex) {
-        Logger.getLogger(TeacherCourses.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AdminAttendance.class.getName()).log(Level.SEVERE, null, ex);
         JOptionPane.showMessageDialog(this, ex);
     }
         
@@ -563,9 +563,9 @@ int selectedIndex = tab1.getSelectedRow();
 txt1.setText(model.getValueAt(selectedIndex, 1).toString()); // Student Name
 txt2.setText(model.getValueAt(selectedIndex, 2).toString()); // Student ID
 txt3.setText(model.getValueAt(selectedIndex, 3).toString()); // Grade and Section
-txt4.setText(model.getValueAt(selectedIndex, 4).toString()); // Course Code
-txt5.setText(model.getValueAt(selectedIndex, 5).toString()); // Schedule
-txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // Room
+txt4.setText(model.getValueAt(selectedIndex, 4).toString()); // September
+txt5.setText(model.getValueAt(selectedIndex, 5).toString()); // October
+txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // November
     }//GEN-LAST:event_tab1MouseClicked
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
@@ -582,11 +582,11 @@ txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // Room
             try {
                 Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
                 Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
-                PreparedStatement pst = con.prepareStatement("delete from Courses where id = ?");
+                PreparedStatement pst = con.prepareStatement("delete from Attendance where id = ?");
 
                 pst.setInt(1, id);
 
-                String query = "SELECT COUNT(*) FROM Courses WHERE [student_id] = ?";
+                String query = "SELECT COUNT(*) FROM Attendance WHERE [student_id] = ?";
                 PreparedStatement checkStmt = con.prepareStatement(query);
                 String sid = null;
                 checkStmt.setString(1, sid);
@@ -597,7 +597,7 @@ txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // Room
                 } else {
                     pst.executeUpdate();
                     con.commit();
-                    JOptionPane.showMessageDialog(null, "Login Information Deleted!", "User Login Information", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Information Deleted!", "User Login Information", JOptionPane.INFORMATION_MESSAGE);
                     tableupdate();
                     txt1.setText("");
                     txt2.setText("");
@@ -633,14 +633,38 @@ txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // Room
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TeacherCourses.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminAttendance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TeacherCourses.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminAttendance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TeacherCourses.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminAttendance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TeacherCourses.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminAttendance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -653,7 +677,7 @@ txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // Room
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TeacherCourses().setVisible(true);
+                new AdminAttendance().setVisible(true);
             }
         });
     }

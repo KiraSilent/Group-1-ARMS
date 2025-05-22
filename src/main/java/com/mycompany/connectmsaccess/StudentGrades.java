@@ -91,17 +91,17 @@ public class StudentGrades extends javax.swing.JFrame {
 
         tab1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Student Name", "Student ID", "Grade and Section", "Course Code", "Schedule", "Room"
+                "student_name", "student_id", "grade_and_section", "frstQ", "scndQ", "avgG"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -247,9 +247,9 @@ public class StudentGrades extends javax.swing.JFrame {
     public void tableupdate() {
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
 
-        pst = con.prepareStatement("SELECT * FROM Courses");
+        pst = con.prepareStatement("SELECT * FROM Grades");
         rs = pst.executeQuery();
 
         DefaultTableModel dft = (DefaultTableModel) tab1.getModel();
@@ -258,13 +258,12 @@ public class StudentGrades extends javax.swing.JFrame {
         while (rs.next()) {
             Vector v2 = new Vector();
 
-            v2.add(rs.getString("ID"));
             v2.add(rs.getString("student_name"));
             v2.add(rs.getString("student_id"));
             v2.add(rs.getString("grade_and_section"));
-            v2.add(rs.getString("course_code"));
-            v2.add(rs.getString("schedule"));
-            v2.add(rs.getString("room"));
+            v2.add(rs.getString("frstQ"));
+            v2.add(rs.getString("scndQ"));
+            v2.add(rs.getString("avgG"));
 
             dft.addRow(v2);
         }
