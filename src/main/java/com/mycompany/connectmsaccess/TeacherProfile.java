@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import com.mycompany.connectmsaccess.UserLogin;
 
 public class TeacherProfile extends javax.swing.JFrame {
 
@@ -22,7 +23,7 @@ public class TeacherProfile extends javax.swing.JFrame {
     public TeacherProfile() {
         initComponents();
         conn = ConnectMsAccess.conn();
-
+        loadUserData();
     }
 
     /**
@@ -35,25 +36,26 @@ public class TeacherProfile extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        lblusername = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblstudentid = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        lblemail = new javax.swing.JLabel();
-        lblfullname = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        lbldob = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        lblgender = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        lblnationality = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        lblphonenumber = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        lblhomeaddress = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lblfullname = new javax.swing.JTextField();
+        lbldob = new javax.swing.JTextField();
+        lblgender = new javax.swing.JTextField();
+        lblnationality = new javax.swing.JTextField();
+        lblphonenumber = new javax.swing.JTextField();
+        lblhomeaddress = new javax.swing.JTextField();
+        lblstudentid = new javax.swing.JTextField();
+        lblemail = new javax.swing.JTextField();
+        lblusername = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -69,53 +71,26 @@ public class TeacherProfile extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblusername.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblusername.setText("Name");
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Student ID:");
-
-        lblstudentid.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblstudentid.setText("01-00-0001");
+        jLabel5.setText("Teacher ID:");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Email:");
 
-        lblemail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblemail.setText("*Insert Email*");
-
-        lblfullname.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblfullname.setText("*Full name*");
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Full Name:");
-
-        lbldob.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbldob.setText("October 30, 2007");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Date of Birth:");
 
-        lblgender.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblgender.setText("Male");
-
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Gender:");
-
-        lblnationality.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblnationality.setText("Filipino");
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("Nationality:");
 
-        lblphonenumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblphonenumber.setText("*Phone number*");
-
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Phone Number: ");
-
-        lblhomeaddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblhomeaddress.setText("*Home address*");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel20.setText("Home Address:");
@@ -123,10 +98,74 @@ public class TeacherProfile extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 102, 204));
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Edit Profile");
+        jButton1.setText("Edit Profile?");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        lblfullname.setEnabled(false);
+
+        lbldob.setEnabled(false);
+
+        lblgender.setEnabled(false);
+        lblgender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblgenderActionPerformed(evt);
+            }
+        });
+
+        lblnationality.setEnabled(false);
+        lblnationality.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblnationalityActionPerformed(evt);
+            }
+        });
+
+        lblphonenumber.setEnabled(false);
+        lblphonenumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblphonenumberActionPerformed(evt);
+            }
+        });
+
+        lblhomeaddress.setEnabled(false);
+        lblhomeaddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblhomeaddressActionPerformed(evt);
+            }
+        });
+
+        lblstudentid.setEnabled(false);
+        lblstudentid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblstudentidActionPerformed(evt);
+            }
+        });
+
+        lblemail.setEnabled(false);
+        lblemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblemailActionPerformed(evt);
+            }
+        });
+
+        lblusername.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblusername.setEnabled(false);
+        lblusername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblusernameActionPerformed(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(0, 102, 204));
+        jButton3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Save Changes?");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -137,19 +176,19 @@ public class TeacherProfile extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(361, 361, 361)
-                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(403, 403, 403)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblemail))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblstudentid, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbldob))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblfullname))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -159,74 +198,80 @@ public class TeacherProfile extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblnationality))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel18)
+                                .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblphonenumber))
+                                .addComponent(lblfullname))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel20)
+                                .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblhomeaddress))
+                                .addComponent(lbldob))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(425, 425, 425)
-                                .addComponent(lblusername))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(384, 384, 384)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblstudentid))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addGap(394, 394, 394)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblemail)))
-                                .addGap(16, 16, 16)))))
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel18))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblphonenumber, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                                    .addComponent(lblhomeaddress, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(361, 361, 361)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(376, 376, 376)
+                        .addComponent(lblusername, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(420, 420, 420)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(384, 384, 384))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel21)
+                .addGap(9, 9, 9)
+                .addComponent(lblusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblusername)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(lblstudentid))
+                    .addComponent(lblstudentid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(lblemail))
+                    .addComponent(lblemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(lblfullname))
+                    .addComponent(lblfullname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(lbldob))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lbldob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(lblgender))
+                    .addComponent(lblgender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(lblnationality))
+                    .addComponent(lblnationality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(lblphonenumber))
+                    .addComponent(lblphonenumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(lblhomeaddress))
+                    .addComponent(lblhomeaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
@@ -375,62 +420,67 @@ public class TeacherProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Add other fields you want to show
-private void ran() {
-    try {
-        
-        String sql = "SELECT user_name, full_name, email, tchr_id, gender, nationality, date_of_birth, phone_number, home_address " +
-                     "FROM UserLogin WHERE user_name = ?";
+    private void loadUserData() {
+            try {
+        String sql = "SELECT * FROM UserLogin WHERE user_name = ?";
         pst = conn.prepareStatement(sql);
-        pst.setString(1, loggedInUsername);
+        pst.setString(1, UserLogin.loggedInUsername); 
         rs = pst.executeQuery();
 
         if (rs.next()) {
+            // Set values from result set into labels or text fields
             lblusername.setText(rs.getString("user_name"));
             lblfullname.setText(rs.getString("full_name"));
             lblemail.setText(rs.getString("email"));
-            lblstudentid.setText(rs.getString("tchr_id"));
-            lblgender.setText(rs.getString("gender"));
-            lblnationality.setText(rs.getString("nationality"));
             lbldob.setText(rs.getString("date_of_birth"));
+            lblgender.setText(rs.getString("gender"));
             lblphonenumber.setText(rs.getString("phone_number"));
             lblhomeaddress.setText(rs.getString("home_address"));
+            lblstudentid.setText(rs.getString("tchr_id"));
+            lblnationality.setText(rs.getString("nationality"));
         } else {
-            JOptionPane.showMessageDialog(null, "User profile not found.");
+            JOptionPane.showMessageDialog(this, "No profile found.");
         }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Failed to load profile: " + e.getMessage());
-    } finally {
-        try {
-            if (rs != null) rs.close();
-            if (pst != null) pst.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-}
-    
-   
-   
 
-        
-        {  
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error loading profile: " + e.getMessage());
+    }
+
+    }
+    
+
+    {
 }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new StudentProfile().setVisible(true);
-        dispose();
+     lblusername.enable();
+     lbldob.enable();
+     lblgender.enable();
+     lblnationality.enable();
+     lblemail.enable();
+     lblstudentid.enable();
+     lblhomeaddress.enable();
+     lblphonenumber.enable();
+     lblfullname.enable();
+     
+     
+     
+     
+     
+     
+     
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
-        new TeacherProfile().setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_but1ActionPerformed
 
     private void but2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but2ActionPerformed
         // TODO add your handling code here:
         new TeacherDashboard().setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_but2ActionPerformed
 
     private void but3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but3ActionPerformed
@@ -451,6 +501,69 @@ private void ran() {
         dispose();
     }//GEN-LAST:event_but6ActionPerformed
 
+    private void lblgenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblgenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblgenderActionPerformed
+
+    private void lblnationalityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblnationalityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblnationalityActionPerformed
+
+    private void lblphonenumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblphonenumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblphonenumberActionPerformed
+
+    private void lblhomeaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblhomeaddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblhomeaddressActionPerformed
+
+    private void lblstudentidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblstudentidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblstudentidActionPerformed
+
+    private void lblemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblemailActionPerformed
+
+    private void lblusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblusernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblusernameActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        try {
+        String sql = "UPDATE UserLogin SET full_name = ?, email = ?, date_of_birth = ?, gender = ?, phone_number = ?, home_address = ?, tchr_id = ?, nationality = ? WHERE user_name = ?";
+        pst = conn.prepareStatement(sql);
+        pst.setString(1, lblfullname.getText());
+        pst.setString(2, lblemail.getText());
+        pst.setString(3, lbldob.getText());
+        pst.setString(4, lblgender.getText());
+        pst.setString(5, lblphonenumber.getText());
+        pst.setString(6, lblhomeaddress.getText());
+        pst.setString(7, lblstudentid.getText());
+        pst.setString(8, lblnationality.getText());
+        pst.setString(9, UserLogin.loggedInUsername);  // WHERE clause
+
+        int rowsAffected = pst.executeUpdate();
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(this, "Profile updated successfully!");
+     lblusername.disable();
+     lbldob.disable();
+     lblgender.disable();
+     lblnationality.disable();
+     lblemail.disable();
+     lblstudentid.disable();
+     lblhomeaddress.disable();
+     lblphonenumber.disable();
+     lblfullname.disable();
+        } else {
+            JOptionPane.showMessageDialog(this, "No changes were made.");
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error updating profile: " + e.getMessage());
+    
+    }//GEN-LAST:event_jButton3ActionPerformed
+    }    
     /**
      * @param args the command line arguments
      */
@@ -494,6 +607,7 @@ private void ran() {
     private javax.swing.JButton but4;
     private javax.swing.JButton but6;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -509,19 +623,22 @@ private void ran() {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lbldob;
-    private javax.swing.JLabel lblemail;
-    private javax.swing.JLabel lblfullname;
-    private javax.swing.JLabel lblgender;
-    private javax.swing.JLabel lblhomeaddress;
-    private javax.swing.JLabel lblnationality;
-    private javax.swing.JLabel lblphonenumber;
-    private javax.swing.JLabel lblstudentid;
-    private javax.swing.JLabel lblusername;
+    private javax.swing.JTextField lbldob;
+    private javax.swing.JTextField lblemail;
+    private javax.swing.JTextField lblfullname;
+    private javax.swing.JTextField lblgender;
+    private javax.swing.JTextField lblhomeaddress;
+    private javax.swing.JTextField lblnationality;
+    private javax.swing.JTextField lblphonenumber;
+    private javax.swing.JTextField lblstudentid;
+    private javax.swing.JTextField lblusername;
     // End of variables declaration//GEN-END:variables
 
     private void loadUserProfile() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-}
 
+    private void loadStudentProfile() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+}

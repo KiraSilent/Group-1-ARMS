@@ -150,9 +150,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         but1.setBackground(new java.awt.Color(0, 102, 204));
-        but1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         but1.setForeground(new java.awt.Color(255, 255, 255));
-        but1.setText("Profile");
+        but1.setText("Login Management");
         but1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 but1ActionPerformed(evt);
@@ -420,7 +420,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
     private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
-        new StudentProfile().setVisible(true);
+        new AdminProfile().setVisible(true);
         dispose();
     }//GEN-LAST:event_but1ActionPerformed
 
@@ -430,19 +430,19 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void but3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but3ActionPerformed
         // TODO add your handling code here:
-        new StudentCourses().setVisible(true);
+        new AdminCourses().setVisible(true);
         dispose();
     }//GEN-LAST:event_but3ActionPerformed
 
     private void but4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but4ActionPerformed
         // TODO add your handling code here:
-        new StudentAttendance().setVisible(true);
+        new AdminAttendance().setVisible(true);
         dispose();
     }//GEN-LAST:event_but4ActionPerformed
 
     private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed
         // TODO add your handling code here:
-        new StudentGrades().setVisible(true);
+        new AdminGrades().setVisible(true);
         dispose();
     }//GEN-LAST:event_but6ActionPerformed
 

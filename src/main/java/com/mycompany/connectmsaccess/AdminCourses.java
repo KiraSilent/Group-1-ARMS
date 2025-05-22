@@ -68,6 +68,7 @@ public class AdminCourses extends javax.swing.JFrame {
         txt6 = new javax.swing.JTextField();
         javax.swing.JLabel jLabel10 = new javax.swing.JLabel();
         javax.swing.JButton jButton3 = new javax.swing.JButton();
+        javax.swing.JButton jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,7 +102,7 @@ public class AdminCourses extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("Student Management");
+        jLabel3.setText("Courses");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -151,9 +152,9 @@ public class AdminCourses extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         but1.setBackground(new java.awt.Color(0, 102, 204));
-        but1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         but1.setForeground(new java.awt.Color(255, 255, 255));
-        but1.setText("Profile");
+        but1.setText("Login Management");
         but1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 but1ActionPerformed(evt);
@@ -263,6 +264,14 @@ public class AdminCourses extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton4.setText("Delete");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -289,10 +298,15 @@ public class AdminCourses extends javax.swing.JFrame {
                         .addComponent(jLabel8)))
                 .addGap(0, 22, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -328,6 +342,8 @@ public class AdminCourses extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -401,13 +417,13 @@ public class AdminCourses extends javax.swing.JFrame {
     }
     private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
-        new TeacherProfile().setVisible(true);
+        new AdminProfile().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_but1ActionPerformed
 
     private void but2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but2ActionPerformed
         // TODO add your handling code here:
-        new TeacherDashboard().setVisible(true);
+        new AdminDashboard().setVisible(true);
         dispose();
     }//GEN-LAST:event_but2ActionPerformed
 
@@ -418,13 +434,13 @@ public class AdminCourses extends javax.swing.JFrame {
 
     private void but4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but4ActionPerformed
         // TODO add your handling code here:
-        new TeacherAttendance().setVisible(true);
+        new AdminAttendance().setVisible(true);
         dispose();
     }//GEN-LAST:event_but4ActionPerformed
 
     private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed
         // TODO add your handling code here:
-        new TeacherGrades().setVisible(true);
+        new AdminGrades().setVisible(true);
         dispose();
     }//GEN-LAST:event_but6ActionPerformed
 
@@ -440,7 +456,7 @@ public class AdminCourses extends javax.swing.JFrame {
 
     try {
     Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
     
     // Step 1: Prepare the INSERT statement
     pst = con.prepareStatement("INSERT INTO Courses([student_name], [student_id], [grade_and_section], [course_code], [schedule], [room]) VALUES (?, ?, ?, ?, ?, ?)");   
@@ -508,7 +524,7 @@ public class AdminCourses extends javax.swing.JFrame {
 
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
         PreparedStatement pst = con.prepareStatement(
             "UPDATE Courses SET [student_name]=?, [student_id]=?, [grade_and_section]=?, [course_code]=?, [schedule]=?, [room]=? WHERE ID = ?");
@@ -555,6 +571,53 @@ txt4.setText(model.getValueAt(selectedIndex, 4).toString()); // Course Code
 txt5.setText(model.getValueAt(selectedIndex, 5).toString()); // Schedule
 txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // Room
     }//GEN-LAST:event_tab1MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        DefaultTableModel model = (DefaultTableModel) tab1.getModel();
+        int selectedIndex = tab1.getSelectedRow();
+
+        int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
+
+        int dialogresult = JOptionPane.showConfirmDialog(null, "Are you sure you wanna delete this student information?", "Warning", JOptionPane.YES_NO_OPTION);
+
+        if (dialogresult == JOptionPane.YES_NO_OPTION)
+        {
+            try {
+                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
+                PreparedStatement pst = con.prepareStatement("delete from Courses where id = ?");
+
+                pst.setInt(1, id);
+
+                String query = "SELECT COUNT(*) FROM Courses WHERE [student_id] = ?";
+                PreparedStatement checkStmt = con.prepareStatement(query);
+                String SID = null;
+                checkStmt.setString(1, SID);
+                ResultSet rs = checkStmt.executeQuery();
+
+                if (rs.next() && rs.getInt(1) > 0) {
+                    JOptionPane.showMessageDialog(null, "This Student ID already exists.");
+                } else {
+                    pst.executeUpdate();
+                    con.commit();
+                    JOptionPane.showMessageDialog(null, "Student Information Deleted!", "Student Information", JOptionPane.INFORMATION_MESSAGE);
+                    tableupdate();
+                    txt1.setText("");
+                    txt2.setText("");
+                    txt3.setText("");
+                    txt4.setText("");
+                    txt5.setText("");
+                    txt6.setText("");
+                }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AdminCourses.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminCourses.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

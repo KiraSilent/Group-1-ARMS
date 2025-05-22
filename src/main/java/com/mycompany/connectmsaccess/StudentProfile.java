@@ -321,7 +321,7 @@ public class StudentProfile extends javax.swing.JFrame {
         but2.setBackground(new java.awt.Color(0, 102, 204));
         but2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         but2.setForeground(new java.awt.Color(255, 255, 255));
-        but2.setText("Students");
+        but2.setText("Dashboard");
         but2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 but2ActionPerformed(evt);
@@ -474,13 +474,12 @@ public class StudentProfile extends javax.swing.JFrame {
 
     private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
-        new StudentProfile().setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_but1ActionPerformed
 
     private void but2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but2ActionPerformed
         // TODO add your handling code here:
-        new TeacherDashboard().setVisible(true);
+        new StudentDashboard().setVisible(true);
         
     }//GEN-LAST:event_but2ActionPerformed
 

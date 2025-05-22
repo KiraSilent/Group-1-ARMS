@@ -102,7 +102,7 @@ public class AdminAttendance extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("Student Management");
+        jLabel3.setText("Attendance");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -152,9 +152,9 @@ public class AdminAttendance extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         but1.setBackground(new java.awt.Color(0, 102, 204));
-        but1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         but1.setForeground(new java.awt.Color(255, 255, 255));
-        but1.setText("Profile");
+        but1.setText("Login Management");
         but1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 but1ActionPerformed(evt);
@@ -383,7 +383,7 @@ public class AdminAttendance extends javax.swing.JFrame {
     public void tableupdate() {
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
         pst = con.prepareStatement("SELECT * FROM Attendance");
         rs = pst.executeQuery();
@@ -413,30 +413,30 @@ public class AdminAttendance extends javax.swing.JFrame {
     }
     private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
-        new TeacherProfile().setVisible(true);
+        new AdminProfile().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_but1ActionPerformed
 
     private void but2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but2ActionPerformed
         // TODO add your handling code here:
-        new TeacherDashboard().setVisible(true);
+        new AdminDashboard().setVisible(true);
         dispose();
     }//GEN-LAST:event_but2ActionPerformed
 
     private void but3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but3ActionPerformed
         // TODO add your handling code here:
-        
+        new AdminCourses().setVisible(true);
+        dispose();
     }//GEN-LAST:event_but3ActionPerformed
 
     private void but4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but4ActionPerformed
         // TODO add your handling code here:
-        new AdminAttendance().setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_but4ActionPerformed
 
     private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed
         // TODO add your handling code here:
-        new TeacherGrades().setVisible(true);
+        new AdminGrades().setVisible(true);
         dispose();
     }//GEN-LAST:event_but6ActionPerformed
 
@@ -452,7 +452,7 @@ public class AdminAttendance extends javax.swing.JFrame {
 
     try {
     Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
     
     // Step 1: Prepare the INSERT statement
     pst = con.prepareStatement("INSERT INTO Attendance([student_name], [student_id], [grade_and_section], [september], [october], [november]) VALUES (?, ?, ?, ?, ?, ?)");   
@@ -581,7 +581,7 @@ txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // November
         {
             try {
                 Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-                Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+                Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
                 PreparedStatement pst = con.prepareStatement("delete from Attendance where id = ?");
 
                 pst.setInt(1, id);

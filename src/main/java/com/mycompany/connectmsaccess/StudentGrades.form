@@ -111,7 +111,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Student Management"/>
+        <Property name="text" type="java.lang.String" value="Grades"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel3">
@@ -153,12 +153,12 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="4">
-                    <Column editable="true" title="student_name" type="java.lang.Integer"/>
-                    <Column editable="true" title="student_id" type="java.lang.String"/>
-                    <Column editable="true" title="grade_and_section" type="java.lang.Integer"/>
-                    <Column editable="true" title="frstQ" type="java.lang.String"/>
-                    <Column editable="true" title="scndQ" type="java.lang.String"/>
-                    <Column editable="true" title="avgG" type="java.lang.String"/>
+                    <Column editable="true" title="Student Name" type="java.lang.Integer"/>
+                    <Column editable="true" title="Student ID" type="java.lang.String"/>
+                    <Column editable="true" title="Grade and Section" type="java.lang.Integer"/>
+                    <Column editable="true" title="First Quarter" type="java.lang.String"/>
+                    <Column editable="true" title="Second Quarter" type="java.lang.String"/>
+                    <Column editable="true" title="Average Grade" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -193,13 +193,9 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
                   </TableColumnModel>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
@@ -282,7 +278,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Students"/>
+            <Property name="text" type="java.lang.String" value="Dashboard"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="but2ActionPerformed"/>

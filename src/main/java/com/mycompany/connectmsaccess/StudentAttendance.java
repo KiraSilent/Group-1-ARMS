@@ -85,7 +85,7 @@ public class StudentAttendance extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("Student Management");
+        jLabel3.setText("Attendance");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -108,6 +108,7 @@ public class StudentAttendance extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tab1.setEnabled(false);
         tab1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tab1MouseClicked(evt);
@@ -147,7 +148,7 @@ public class StudentAttendance extends javax.swing.JFrame {
         but2.setBackground(new java.awt.Color(0, 102, 204));
         but2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         but2.setForeground(new java.awt.Color(255, 255, 255));
-        but2.setText("Students");
+        but2.setText("Dashboard");
         but2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 but2ActionPerformed(evt);
@@ -249,7 +250,7 @@ public class StudentAttendance extends javax.swing.JFrame {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
-        pst = con.prepareStatement("SELECT * FROM Courses");
+        pst = con.prepareStatement("SELECT * FROM Attendance");
         rs = pst.executeQuery();
 
         DefaultTableModel dft = (DefaultTableModel) tab1.getModel();
@@ -262,9 +263,9 @@ public class StudentAttendance extends javax.swing.JFrame {
             v2.add(rs.getString("student_name"));
             v2.add(rs.getString("student_id"));
             v2.add(rs.getString("grade_and_section"));
-            v2.add(rs.getString("course_code"));
-            v2.add(rs.getString("schedule"));
-            v2.add(rs.getString("room"));
+            v2.add(rs.getString("september"));
+            v2.add(rs.getString("october"));
+            v2.add(rs.getString("november"));
 
             dft.addRow(v2);
         }
@@ -289,15 +290,14 @@ public class StudentAttendance extends javax.swing.JFrame {
 
     private void but3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but3ActionPerformed
         // TODO add your handling code here:
-        new StudentAttendance().setVisible(true);
+        new StudentCourses().setVisible(true);
         dispose();
         
     }//GEN-LAST:event_but3ActionPerformed
 
     private void but4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but4ActionPerformed
         // TODO add your handling code here:
-        new StudentAttendance().setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_but4ActionPerformed
 
     private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed

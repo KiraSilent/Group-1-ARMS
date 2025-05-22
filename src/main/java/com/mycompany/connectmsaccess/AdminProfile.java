@@ -76,9 +76,9 @@ public class AdminProfile extends javax.swing.JFrame {
         txt9 = new javax.swing.JTextField();
         javax.swing.JLabel jLabel14 = new javax.swing.JLabel();
         txt10 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel15 = new javax.swing.JLabel();
         txt11 = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel16 = new javax.swing.JLabel();
         txt12 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -113,23 +113,23 @@ public class AdminProfile extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("Student Management");
+        jLabel3.setText("Login Management");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         tab1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "user_name", "user_password", "role", "full_name", "email", "date_of_birth", "gender", "phone_number", "home_address", "student_id", "nationality", "tchr_id"
+                "ID", "user_name", "user_password", "role", "full_name", "email", "date_of_birth", "gender", "phone_number", "home_address", "student_id", "nationality", "tchr_id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -158,9 +158,9 @@ public class AdminProfile extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         but1.setBackground(new java.awt.Color(0, 102, 204));
-        but1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         but1.setForeground(new java.awt.Color(255, 255, 255));
-        but1.setText("Profile");
+        but1.setText("Login Management");
         but1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 but1ActionPerformed(evt);
@@ -451,7 +451,7 @@ public class AdminProfile extends javax.swing.JFrame {
     public void tableupdate() {
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
         pst = con.prepareStatement("SELECT * FROM UserLogin");
         rs = pst.executeQuery();
@@ -462,6 +462,7 @@ public class AdminProfile extends javax.swing.JFrame {
         while (rs.next()) {
             Vector v2 = new Vector();
 
+            v2.add(rs.getString("ID"));
             v2.add(rs.getString("user_name"));
             v2.add(rs.getString("user_password"));
             v2.add(rs.getString("role"));
@@ -486,29 +487,30 @@ public class AdminProfile extends javax.swing.JFrame {
     }
     private void but1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but1ActionPerformed
         // TODO add your handling code here:
-        new StudentProfile().setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_but1ActionPerformed
 
     private void but2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but2ActionPerformed
         // TODO add your handling code here:
+        new AdminDashboard().setVisible(true);
+        dispose();
     }//GEN-LAST:event_but2ActionPerformed
 
     private void but3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but3ActionPerformed
         // TODO add your handling code here:
-        new StudentCourses().setVisible(true);
+        new AdminCourses().setVisible(true);
         dispose();
     }//GEN-LAST:event_but3ActionPerformed
 
     private void but4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but4ActionPerformed
         // TODO add your handling code here:
-        new StudentAttendance().setVisible(true);
+        new AdminAttendance().setVisible(true);
         dispose();
     }//GEN-LAST:event_but4ActionPerformed
 
     private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed
         // TODO add your handling code here:
-        new StudentGrades().setVisible(true);
+        new AdminGrades().setVisible(true);
         dispose();
     }//GEN-LAST:event_but6ActionPerformed
 
@@ -530,7 +532,7 @@ public class AdminProfile extends javax.swing.JFrame {
 
     try {
     Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+    Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
     
     // Step 1: Prepare the INSERT statement
     pst = con.prepareStatement("INSERT INTO Userlogin([user_name], [user_password], [role], [full_name], [email], [date_of_birth], [gender], [phone_number], [home_address], [student_id], [nationality], [tchr_id]) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)");   
@@ -661,8 +663,6 @@ public class AdminProfile extends javax.swing.JFrame {
     private javax.swing.JButton but4;
     private javax.swing.JButton but6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;

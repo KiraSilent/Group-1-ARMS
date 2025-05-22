@@ -85,7 +85,7 @@ public class StudentCourses extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("Student Management");
+        jLabel3.setText("Courses");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -108,6 +108,7 @@ public class StudentCourses extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tab1.setEnabled(false);
         tab1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tab1MouseClicked(evt);
@@ -147,7 +148,7 @@ public class StudentCourses extends javax.swing.JFrame {
         but2.setBackground(new java.awt.Color(0, 102, 204));
         but2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         but2.setForeground(new java.awt.Color(255, 255, 255));
-        but2.setText("Students");
+        but2.setText("Dashboard");
         but2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 but2ActionPerformed(evt);
@@ -247,7 +248,7 @@ public class StudentCourses extends javax.swing.JFrame {
     public void tableupdate() {
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\ADMIN\\Desktop//Database1.accdb");
 
         pst = con.prepareStatement("SELECT * FROM Courses");
         rs = pst.executeQuery();
@@ -289,9 +290,7 @@ public class StudentCourses extends javax.swing.JFrame {
 
     private void but3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but3ActionPerformed
         // TODO add your handling code here:
-        new StudentCourses().setVisible(true);
-        dispose();
-        
+       
     }//GEN-LAST:event_but3ActionPerformed
 
     private void but4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but4ActionPerformed
