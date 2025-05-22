@@ -34,7 +34,6 @@ public class StudentDashboard extends javax.swing.JFrame {
         but2 = new javax.swing.JButton();
         but3 = new javax.swing.JButton();
         but4 = new javax.swing.JButton();
-        but5 = new javax.swing.JButton();
         but6 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -49,8 +48,6 @@ public class StudentDashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\Desktop\\imgs\\ccst logo 80px.png")); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,16 +117,6 @@ public class StudentDashboard extends javax.swing.JFrame {
             }
         });
 
-        but5.setBackground(new java.awt.Color(0, 102, 204));
-        but5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but5.setForeground(new java.awt.Color(255, 255, 255));
-        but5.setText("Assignments");
-        but5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but5ActionPerformed(evt);
-            }
-        });
-
         but6.setBackground(new java.awt.Color(0, 102, 204));
         but6.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         but6.setForeground(new java.awt.Color(255, 255, 255));
@@ -151,8 +138,7 @@ public class StudentDashboard extends javax.swing.JFrame {
                     .addComponent(but1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(but2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                     .addComponent(but3, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                    .addComponent(but4, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                    .addComponent(but5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
+                    .addComponent(but4, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -166,8 +152,6 @@ public class StudentDashboard extends javax.swing.JFrame {
                 .addComponent(but3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(but4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(but6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -313,12 +297,6 @@ public class StudentDashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_but4ActionPerformed
 
-    private void but5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but5ActionPerformed
-        // TODO add your handling code here:
-        new StudentAssignments().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_but5ActionPerformed
-
     private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed
         // TODO add your handling code here:
         new StudentGrades().setVisible(true);
@@ -365,7 +343,6 @@ public class StudentDashboard extends javax.swing.JFrame {
     private javax.swing.JButton but2;
     private javax.swing.JButton but3;
     private javax.swing.JButton but4;
-    private javax.swing.JButton but5;
     private javax.swing.JButton but6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

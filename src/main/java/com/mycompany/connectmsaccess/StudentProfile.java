@@ -63,7 +63,6 @@ public class StudentProfile extends javax.swing.JFrame {
         but2 = new javax.swing.JButton();
         but3 = new javax.swing.JButton();
         but4 = new javax.swing.JButton();
-        but5 = new javax.swing.JButton();
         but6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -304,16 +303,6 @@ public class StudentProfile extends javax.swing.JFrame {
             }
         });
 
-        but5.setBackground(new java.awt.Color(0, 102, 204));
-        but5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but5.setForeground(new java.awt.Color(255, 255, 255));
-        but5.setText("Assignments");
-        but5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but5ActionPerformed(evt);
-            }
-        });
-
         but6.setBackground(new java.awt.Color(0, 102, 204));
         but6.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         but6.setForeground(new java.awt.Color(255, 255, 255));
@@ -332,7 +321,6 @@ public class StudentProfile extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(but6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(but3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(but2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(but1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -350,8 +338,6 @@ public class StudentProfile extends javax.swing.JFrame {
                 .addComponent(but3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(but4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(but6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -459,12 +445,6 @@ private void ran() {
         dispose();
     }//GEN-LAST:event_but4ActionPerformed
 
-    private void but5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but5ActionPerformed
-        // TODO add your handling code here:
-        new StudentAssignments().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_but5ActionPerformed
-
     private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed
         // TODO add your handling code here:
         new StudentGrades().setVisible(true);
@@ -511,7 +491,6 @@ private void ran() {
     private javax.swing.JButton but2;
     private javax.swing.JButton but3;
     private javax.swing.JButton but4;
-    private javax.swing.JButton but5;
     private javax.swing.JButton but6;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

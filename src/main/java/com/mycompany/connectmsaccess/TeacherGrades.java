@@ -51,7 +51,6 @@ public class TeacherGrades extends javax.swing.JFrame {
         but2 = new javax.swing.JButton();
         but3 = new javax.swing.JButton();
         but4 = new javax.swing.JButton();
-        but5 = new javax.swing.JButton();
         but6 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
@@ -66,12 +65,7 @@ public class TeacherGrades extends javax.swing.JFrame {
         javax.swing.JButton jButton2 = new javax.swing.JButton();
         txt5 = new javax.swing.JTextField();
         javax.swing.JLabel jLabel9 = new javax.swing.JLabel();
-        txt6 = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel10 = new javax.swing.JLabel();
-        txt7 = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel11 = new javax.swing.JLabel();
-        txt8 = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel12 = new javax.swing.JLabel();
+        javax.swing.JButton jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,21 +105,26 @@ public class TeacherGrades extends javax.swing.JFrame {
 
         tab1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Student Name", "Student ID", "Grade and Section", "Student Email", "Student Contact Number", "Guardian Name", "Guardian Contact", "Guardian Email"
+                "ID", "Student Name", "Student ID", "Grade and Section", "First Quarter", "Second Quarter", "Average Grade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        tab1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tab1);
@@ -189,16 +188,6 @@ public class TeacherGrades extends javax.swing.JFrame {
             }
         });
 
-        but5.setBackground(new java.awt.Color(0, 102, 204));
-        but5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but5.setForeground(new java.awt.Color(255, 255, 255));
-        but5.setText("Assignments");
-        but5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but5ActionPerformed(evt);
-            }
-        });
-
         but6.setBackground(new java.awt.Color(0, 102, 204));
         but6.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         but6.setForeground(new java.awt.Color(255, 255, 255));
@@ -217,7 +206,6 @@ public class TeacherGrades extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(but6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(but3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(but2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(but1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -236,8 +224,6 @@ public class TeacherGrades extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(but4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(but6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -250,7 +236,7 @@ public class TeacherGrades extends javax.swing.JFrame {
 
         jLabel6.setText("Grade and Section");
 
-        jLabel7.setText("Student's Email");
+        jLabel7.setText("First Quarter");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Enter Student Data");
@@ -263,13 +249,15 @@ public class TeacherGrades extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Contact Number");
+        jLabel9.setText("Second Quarter");
 
-        jLabel10.setText("Guardian");
-
-        jLabel11.setText("Guardian's Contact");
-
-        jLabel12.setText("Guardian's Email");
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton3.setText("Edit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -280,8 +268,6 @@ public class TeacherGrades extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel11)
                             .addComponent(jLabel9)
                             .addComponent(txt5)
                             .addComponent(jLabel7)
@@ -291,19 +277,17 @@ public class TeacherGrades extends javax.swing.JFrame {
                             .addComponent(txt3)
                             .addComponent(txt2)
                             .addComponent(txt1)
-                            .addComponent(txt4, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(jLabel10)
-                            .addComponent(txt6)
-                            .addComponent(txt7)
-                            .addComponent(txt8)))
+                            .addComponent(txt4, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jLabel8)))
                 .addGap(0, 22, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,20 +314,10 @@ public class TeacherGrades extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -389,7 +363,7 @@ public class TeacherGrades extends javax.swing.JFrame {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
-        pst = con.prepareStatement("SELECT * FROM StudentInformation");
+        pst = con.prepareStatement("SELECT * FROM Grades");
         rs = pst.executeQuery();
 
         DefaultTableModel dft = (DefaultTableModel) tab1.getModel();
@@ -399,14 +373,12 @@ public class TeacherGrades extends javax.swing.JFrame {
             Vector v2 = new Vector();
 
             v2.add(rs.getString("ID"));
-            v2.add(rs.getString("Student Name"));
-            v2.add(rs.getString("Student ID"));
-            v2.add(rs.getString("Grade and Section"));
-            v2.add(rs.getString("Student Email"));
-            v2.add(rs.getString("Student Contact Number"));
-            v2.add(rs.getString("Guardian Name"));
-            v2.add(rs.getString("Guardian Contact"));
-            v2.add(rs.getString("Guardian Email"));
+            v2.add(rs.getString("student_name"));
+            v2.add(rs.getString("student_id"));
+            v2.add(rs.getString("grade_and_section"));
+            v2.add(rs.getString("frstQ"));
+            v2.add(rs.getString("scndQ"));
+            v2.add(rs.getString("avgG"));
 
             dft.addRow(v2);
         }
@@ -431,8 +403,7 @@ public class TeacherGrades extends javax.swing.JFrame {
 
     private void but3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but3ActionPerformed
         // TODO add your handling code here:
-        new TeacherCourses().setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_but3ActionPerformed
 
     private void but4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but4ActionPerformed
@@ -441,46 +412,43 @@ public class TeacherGrades extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_but4ActionPerformed
 
-    private void but5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but5ActionPerformed
-        // TODO add your handling code here:
-        new TeacherAssignments().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_but5ActionPerformed
-
     private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed
         // TODO add your handling code here:
-        
+        new TeacherGrades().setVisible(true);
+        dispose();
     }//GEN-LAST:event_but6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    String SN, SID, GAD, SE, CN, G, GE, GCN;    
+    String SN, SID, GAD;
+    double CC, S;
 
     SN = txt1.getText();
     SID = txt2.getText();
     GAD = txt3.getText();
-    SE = txt4.getText();
-    CN = txt5.getText();
-    G = txt6.getText();
-    GCN = txt7.getText();
-    GE = txt8.getText();
+    CC = Integer.parseInt(txt4.getText());
+    S = Integer.parseInt(txt5.getText());
 
     try {
     Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
     Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
     
     // Step 1: Prepare the INSERT statement
-    pst = con.prepareStatement("INSERT INTO StudentInformation([Student Name], [Student ID], [Grade and Section], [Student Email], [Student Contact Number], [Guardian Name], [Guardian Contact], [Guardian Email]) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");   
+    pst = con.prepareStatement("INSERT INTO Grades([student_name], [student_id], [grade_and_section], [frstQ], [scndQ], [avgG]) VALUES (?, ?, ?, ?, ?, ?)");   
     
     pst.setString(1, SN);
     pst.setString(2, SID);
     pst.setString(3, GAD);
-    pst.setString(4, SE);
-    pst.setString(5, CN);
-    pst.setString(6, G);
-    pst.setString(7, GCN);
-    pst.setString(8, GE); 
+    pst.setDouble(4, CC);
+    pst.setDouble(5, S);
+    
+    CC = Double.parseDouble(txt4.getText());
+    S = Double.parseDouble(txt5.getText());
+    
+    double avgG = (CC + S)/2;
+    pst.setDouble(6, avgG);
+    
 
-    String query = "SELECT COUNT(*) FROM StudentInformation WHERE [Student ID] = ?";
+    String query = "SELECT COUNT(*) FROM Grades WHERE [student_id] = ?";
     PreparedStatement checkStmt = con.prepareStatement(query);
     checkStmt.setString(1, SID);
     ResultSet rs = checkStmt.executeQuery();
@@ -490,16 +458,13 @@ public class TeacherGrades extends javax.swing.JFrame {
     } else {
         pst.executeUpdate();
         con.commit();
-        JOptionPane.showMessageDialog(null, "You have successfully added!", "Student Information", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You have successfully added!", "Student Grades", JOptionPane.INFORMATION_MESSAGE);
         tableupdate();
         txt1.setText("");
         txt2.setText("");
         txt3.setText("");
         txt4.setText("");
         txt5.setText("");
-        txt6.setText("");
-        txt7.setText("");
-        txt8.setText("");
 
         
         
@@ -519,6 +484,68 @@ public class TeacherGrades extends javax.swing.JFrame {
     }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tab1.getModel();
+    int selectedIndex = tab1.getSelectedRow();
+        
+    int id = Integer.parseInt(model.getValueAt(selectedIndex, 0).toString());
+
+    String SN, SID, GAD, CC, S, R;    
+
+    SN = txt1.getText();
+    SID = txt2.getText();
+    GAD = txt3.getText();
+    CC = txt4.getText();
+    S = txt5.getText();
+
+    try {
+        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
+
+        PreparedStatement pst = con.prepareStatement(
+            "UPDATE Grades SET [student_name]=?, [student_id]=?, [grade_and_section]=?, [frstQ]=?, [scndQ]=?, [avgG]=? WHERE ID = ?");
+
+        pst.setString(1, SN);
+        pst.setString(2, SID);
+        pst.setString(3, GAD);
+        pst.setString(4, CC);
+        pst.setString(5, S);
+        pst.setInt(6, id); 
+
+        pst.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Student Grades  Updated!", "Student Grades", JOptionPane.INFORMATION_MESSAGE);
+
+        tableupdate();
+
+        // Clear fields
+        txt1.setText("");
+        txt2.setText("");
+        txt3.setText("");
+        txt4.setText("");
+        txt5.setText("");
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(TeacherGrades.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(this, ex);
+    } catch (SQLException ex) {
+        Logger.getLogger(TeacherGrades.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(this, ex);
+    }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tab1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1MouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tab1.getModel();
+int selectedIndex = tab1.getSelectedRow();  
+
+txt1.setText(model.getValueAt(selectedIndex, 1).toString()); // Student Name
+txt2.setText(model.getValueAt(selectedIndex, 2).toString()); // Student ID
+txt3.setText(model.getValueAt(selectedIndex, 3).toString()); // Grade and Section
+txt4.setText(model.getValueAt(selectedIndex, 4).toString()); // First Quarter
+txt5.setText(model.getValueAt(selectedIndex, 5).toString()); // Second Quarter
+    }//GEN-LAST:event_tab1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -553,6 +580,14 @@ public class TeacherGrades extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -567,7 +602,6 @@ public class TeacherGrades extends javax.swing.JFrame {
     private javax.swing.JButton but2;
     private javax.swing.JButton but3;
     private javax.swing.JButton but4;
-    private javax.swing.JButton but5;
     private javax.swing.JButton but6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -584,8 +618,5 @@ public class TeacherGrades extends javax.swing.JFrame {
     private javax.swing.JTextField txt3;
     private javax.swing.JTextField txt4;
     private javax.swing.JTextField txt5;
-    private javax.swing.JTextField txt6;
-    private javax.swing.JTextField txt7;
-    private javax.swing.JTextField txt8;
     // End of variables declaration//GEN-END:variables
 }

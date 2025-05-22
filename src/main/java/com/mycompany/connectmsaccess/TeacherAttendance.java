@@ -51,7 +51,6 @@ public class TeacherAttendance extends javax.swing.JFrame {
         but2 = new javax.swing.JButton();
         but3 = new javax.swing.JButton();
         but4 = new javax.swing.JButton();
-        but5 = new javax.swing.JButton();
         but6 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
@@ -114,11 +113,11 @@ public class TeacherAttendance extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Student Name", "Student ID", "Grade and Section", "Course Code", "Schedule", "Room"
+                "ID", "Student Name", "Student ID", "Grade and Section", "September", "October", "November"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -191,16 +190,6 @@ public class TeacherAttendance extends javax.swing.JFrame {
             }
         });
 
-        but5.setBackground(new java.awt.Color(0, 102, 204));
-        but5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but5.setForeground(new java.awt.Color(255, 255, 255));
-        but5.setText("Assignments");
-        but5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but5ActionPerformed(evt);
-            }
-        });
-
         but6.setBackground(new java.awt.Color(0, 102, 204));
         but6.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         but6.setForeground(new java.awt.Color(255, 255, 255));
@@ -219,7 +208,6 @@ public class TeacherAttendance extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(but6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(but5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(but3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(but2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(but1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -238,8 +226,6 @@ public class TeacherAttendance extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(but4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(but5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(but6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -252,7 +238,7 @@ public class TeacherAttendance extends javax.swing.JFrame {
 
         jLabel6.setText("Grade and Section");
 
-        jLabel7.setText("Course Code");
+        jLabel7.setText("September (Days present)");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Enter Student Data");
@@ -265,9 +251,9 @@ public class TeacherAttendance extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Schedule");
+        jLabel9.setText("October (Days present)");
 
-        jLabel10.setText("Room");
+        jLabel10.setText("November (Days present)");
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setText("Edit");
@@ -286,7 +272,6 @@ public class TeacherAttendance extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel9)
                             .addComponent(txt5)
                             .addComponent(jLabel7)
                             .addComponent(jLabel6)
@@ -297,7 +282,8 @@ public class TeacherAttendance extends javax.swing.JFrame {
                             .addComponent(txt1)
                             .addComponent(txt4, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(jLabel10)
-                            .addComponent(txt6)))
+                            .addComponent(txt6)
+                            .addComponent(jLabel9)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jLabel8)))
@@ -387,7 +373,7 @@ public class TeacherAttendance extends javax.swing.JFrame {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
-        pst = con.prepareStatement("SELECT * FROM Courses");
+        pst = con.prepareStatement("SELECT * FROM Attendance");
         rs = pst.executeQuery();
 
         DefaultTableModel dft = (DefaultTableModel) tab1.getModel();
@@ -400,9 +386,9 @@ public class TeacherAttendance extends javax.swing.JFrame {
             v2.add(rs.getString("student_name"));
             v2.add(rs.getString("student_id"));
             v2.add(rs.getString("grade_and_section"));
-            v2.add(rs.getString("course_code"));
-            v2.add(rs.getString("schedule"));
-            v2.add(rs.getString("room"));
+            v2.add(rs.getString("september"));
+            v2.add(rs.getString("october"));
+            v2.add(rs.getString("november"));
 
             dft.addRow(v2);
         }
@@ -436,12 +422,6 @@ public class TeacherAttendance extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_but4ActionPerformed
 
-    private void but5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but5ActionPerformed
-        // TODO add your handling code here:
-        new TeacherAssignments().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_but5ActionPerformed
-
     private void but6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but6ActionPerformed
         // TODO add your handling code here:
         new TeacherGrades().setVisible(true);
@@ -463,7 +443,7 @@ public class TeacherAttendance extends javax.swing.JFrame {
     Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
     
     // Step 1: Prepare the INSERT statement
-    pst = con.prepareStatement("INSERT INTO Courses([student_name], [student_id], [grade_and_section], [course_code], [schedule], [room]) VALUES (?, ?, ?, ?, ?, ?)");   
+    pst = con.prepareStatement("INSERT INTO Attendance([student_name], [student_id], [grade_and_section], [september], [october], [november]) VALUES (?, ?, ?, ?, ?, ?)");   
     
     pst.setString(1, SN);
     pst.setString(2, SID);
@@ -472,7 +452,7 @@ public class TeacherAttendance extends javax.swing.JFrame {
     pst.setString(5, S);
     pst.setString(6, R);
 
-    String query = "SELECT COUNT(*) FROM Courses WHERE [student_id] = ?";
+    String query = "SELECT COUNT(*) FROM Attendance WHERE [student_id] = ?";
     PreparedStatement checkStmt = con.prepareStatement(query);
     checkStmt.setString(1, SID);
     ResultSet rs = checkStmt.executeQuery();
@@ -531,7 +511,7 @@ public class TeacherAttendance extends javax.swing.JFrame {
         Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
         PreparedStatement pst = con.prepareStatement(
-            "UPDATE Courses SET [student_name]=?, [student_id]=?, [grade_and_section]=?, [course_code]=?, [schedule]=?, [room]=? WHERE ID = ?");
+            "UPDATE Attendance SET [student_name]=?, [student_id]=?, [grade_and_section]=?, [september]=?, [october]=?, [november]=? WHERE ID = ?");
 
         pst.setString(1, SN);
         pst.setString(2, SID);
@@ -542,7 +522,7 @@ public class TeacherAttendance extends javax.swing.JFrame {
         pst.setInt(7, id); 
 
         pst.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Student Course Information Updated!", "Student Information", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Student Attendance Updated!", "Attendance", JOptionPane.INFORMATION_MESSAGE);
 
         tableupdate();
 
@@ -571,9 +551,9 @@ int selectedIndex = tab1.getSelectedRow();
 txt1.setText(model.getValueAt(selectedIndex, 1).toString()); // Student Name
 txt2.setText(model.getValueAt(selectedIndex, 2).toString()); // Student ID
 txt3.setText(model.getValueAt(selectedIndex, 3).toString()); // Grade and Section
-txt4.setText(model.getValueAt(selectedIndex, 4).toString()); // Course Code
-txt5.setText(model.getValueAt(selectedIndex, 5).toString()); // Schedule
-txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // Room
+txt4.setText(model.getValueAt(selectedIndex, 4).toString()); // September
+txt5.setText(model.getValueAt(selectedIndex, 5).toString()); // October
+txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // November
     }//GEN-LAST:event_tab1MouseClicked
 
     /**
@@ -631,7 +611,6 @@ txt6.setText(model.getValueAt(selectedIndex, 6).toString()); // Room
     private javax.swing.JButton but2;
     private javax.swing.JButton but3;
     private javax.swing.JButton but4;
-    private javax.swing.JButton but5;
     private javax.swing.JButton but6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
