@@ -168,7 +168,7 @@ public class UserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txt1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      String username = txt1.getText();
+  String username = txt1.getText();
 char[] pass = txt2.getPassword();
 String userpassword = String.valueOf(pass);
 
@@ -179,10 +179,10 @@ try {
     pst.setString(2, userpassword);
     rs = pst.executeQuery();
 
-    if (!rs.next()) {
-        JOptionPane.showMessageDialog(null, "Username or Password is incorrect");
-    } else {
-        String role = rs.getString("role"); // read the role from the database
+    if (rs.next()) {
+        // User found — get role and set logged in username
+        loggedInUsername = rs.getString("user_name");
+        String role = rs.getString("role");
 
         JOptionPane.showMessageDialog(null, "Login successful as " + role);
 
@@ -192,7 +192,7 @@ try {
                 new TeacherDashboard().setVisible(true);
                 break;
             case "student":
-                new StudentDashboard().setVisible(true);
+                new StudentProfile().setVisible(true);
                 break;
             case "admin":
                 new AdminDashboard().setVisible(true);
@@ -201,23 +201,16 @@ try {
                 JOptionPane.showMessageDialog(null, "Unknown user role.");
                 break;
         }
-if (rs.next()) {
-    // User successfully logged in
-     username = rs.getString("user_name");
-    
-    StudentProfile.loggedInUsername = username;
-    StudentProfileEdit.loggedInUsername = username; 
 
-    StudentProfileEdit spe = new StudentProfileEdit();
-    spe.setVisible(true);
-    this.dispose();
-}
-        dispose(); // close the login window
+        dispose(); // Close login form
+    } else {
+        JOptionPane.showMessageDialog(null, "Username or Password is incorrect");
     }
+
 } catch (SQLException e) {
     JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage());
-
 }
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -284,4 +277,8 @@ if (rs.next()) {
     private javax.swing.JTextField txt1;
     private javax.swing.JPasswordField txt2;
     // End of variables declaration//GEN-END:variables
-}
+    {
+    
+}}
+     
+
