@@ -115,17 +115,17 @@ public class AdminProfileEdit extends javax.swing.JFrame {
 
         tab1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "user_name", "user_password", "role", "full_name", "email", "date_of_birth", "gender", "phone_number", "home_address", "student_id", "nationality", "tchr_id"
+                "ID", "user_name", "user_password", "role", "full_name", "email", "date_of_birth", "gender", "phone_number", "home_address", "student_id", "nationality", "tchr_id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -478,7 +478,7 @@ public class AdminProfileEdit extends javax.swing.JFrame {
 public void tableupdate() {
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//ADMIN//Desktop//Database1.accdb");
 
         PreparedStatement pst = con.prepareStatement("SELECT * FROM UserLogin");
         ResultSet rs = pst.executeQuery();
@@ -489,6 +489,7 @@ public void tableupdate() {
         while (rs.next()) {
             Vector v2 = new Vector();
 
+            v2.add(rs.getString("ID"));
             v2.add(rs.getString("user_name"));
             v2.add(rs.getString("user_password"));
             v2.add(rs.getString("role"));
@@ -565,12 +566,12 @@ public void tableupdate() {
 
     try {
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+        Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\ADMIN\\Desktop//Database1.accdb");
 
         PreparedStatement pst = con.prepareStatement(
             "UPDATE UserLogin SET [user_name]=?, [user_password]=?, [role]=?, [full_name]=?, [email]=?, [date_of_birth]=?, [gender]=?, [phone_number]=?, [home_address]=?, [student_id]=?, [nationality]=?, [tchr_id]=? WHERE ID = ?");
 
-          pst.setString(1, username);
+    pst.setString(1, username);
     pst.setString(2, userpass);
     pst.setString(3, role);
     pst.setString(4, fullname);
@@ -581,7 +582,8 @@ public void tableupdate() {
     pst.setString(9, ha); 
     pst.setString(10, sid); 
     pst.setString(11, nationality); 
-    pst.setString(12, tid);  
+    pst.setString(12, tid); 
+    pst.setInt(13, id);
 
         pst.executeUpdate();
         JOptionPane.showMessageDialog(null, "Login Information Updated!", "Login Information", JOptionPane.INFORMATION_MESSAGE);
@@ -603,10 +605,10 @@ public void tableupdate() {
         txt12.setText("");
 
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(AdminDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AdminProfileEdit.class.getName()).log(Level.SEVERE, null, ex);
         JOptionPane.showMessageDialog(this, ex);
     } catch (SQLException ex) {
-        Logger.getLogger(AdminDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AdminProfileEdit.class.getName()).log(Level.SEVERE, null, ex);
         JOptionPane.showMessageDialog(this, ex);
     }
 }
@@ -626,7 +628,7 @@ public void tableupdate() {
         {
         try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\rexce\\Downloads//Database1.accdb");
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\ADMIN\\Desktop//Database1.accdb");
     PreparedStatement pst = con.prepareStatement("delete from UserLogin where id = ?");   
         
     pst.setInt(1, id); 
